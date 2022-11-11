@@ -13,6 +13,14 @@ public class Persona {
     
     public Persona() {
     }
+    
+    public Persona(String documento, String nombres, String apellidos, String correo, String telefono) {
+        this.documento = documento;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.correo = correo;
+        this.telefono = telefono;
+    }
 
     public Persona(int id, String documento, String nombres, String apellidos, String correo, String telefono) {
         this.id = id;

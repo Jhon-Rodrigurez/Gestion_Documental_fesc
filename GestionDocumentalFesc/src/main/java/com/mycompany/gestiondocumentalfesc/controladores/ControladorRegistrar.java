@@ -6,7 +6,7 @@ package com.mycompany.gestiondocumentalfesc.controladores;
 
 /**
  *
- * @author Lenovo
+ * @author Familia
  */
 public class ControladorRegistrar {
     

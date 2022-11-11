@@ -12,6 +12,11 @@ public class Usuario extends Persona {
     public Usuario(int cargo) {
         this.cargo = cargo;
     }
+    
+    public Usuario(int cargo, String documento, String nombres, String apellidos, String correo, String telefono) {
+        super(documento, nombres, apellidos, correo, telefono);
+        this.cargo = cargo;
+    }
 
     public Usuario(int cargo, int id, String documento, String nombres, String apellidos, String correo, String telefono) {
         super(id, documento, nombres, apellidos, correo, telefono);

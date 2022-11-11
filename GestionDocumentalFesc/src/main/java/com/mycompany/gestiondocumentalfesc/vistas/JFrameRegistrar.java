@@ -4,19 +4,7 @@
  */
 package com.mycompany.gestiondocumentalfesc.vistas;
 
-import com.mycompany.gestiondocumentalfesc.daos.Conexion;
-import com.mycompany.gestiondocumentalfesc.daos.Constantes;
-import com.sun.jndi.cosnaming.CNCtx;
-import com.sun.media.sound.ModelOscillator;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 
 public class JFrameRegistrar extends javax.swing.JFrame {
@@ -374,6 +362,11 @@ public class JFrameRegistrar extends javax.swing.JFrame {
 
         jtbGuardarDatos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jtbGuardarDatos.setText("GUARDAR DATOS");
+        jtbGuardarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbGuardarDatosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -497,6 +490,10 @@ public class JFrameRegistrar extends javax.swing.JFrame {
             }
         }*/ 
     }//GEN-LAST:event_jButtonSubirArchivoActionPerformed
+
+    private void jtbGuardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbGuardarDatosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbGuardarDatosActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,6 +1,8 @@
 
 package com.mycompany.gestiondocumentalfesc.modelos;
 
+import java.util.ArrayList;
+
 
 public class Destinatario extends Persona{
     
@@ -9,8 +11,9 @@ public class Destinatario extends Persona{
 
     public Destinatario() {
     }
-
-    public Destinatario(String cargo, String area) {
+    
+    public Destinatario(String cargo, String area, String documento, String nombres, String apellidos, String correo, String telefono) {
+        super(documento, nombres, apellidos, correo, telefono);
         this.cargo = cargo;
         this.area = area;
     }
@@ -37,5 +40,35 @@ public class Destinatario extends Persona{
         this.area = area;
     }
 
-    
+    public static ArrayList<Destinatario> getEstudianteRemitentes() {
+        
+        ArrayList<Destinatario> arrayListDestinatarios = new ArrayList<>();
+        
+        String cargo = "oficinista";
+        String area = "caja";
+        int id = 1;
+        String doc = "309823234";
+        String nombres = "jimena";
+        String apellidos = "aguilar";
+        String correo = "jimena@gmail.com";
+        String telefono = "30008752234";
+        
+        Destinatario d1 = new Destinatario(cargo, area, id, doc, nombres, apellidos, correo, telefono);
+        
+        cargo = "vicente";
+        area = "rectoria";
+        id = 2;
+        doc = "23098423";
+        nombres = "luis";
+        apellidos = "Velasques";
+        correo = "luisV@gmail.com";
+        telefono = "324987334";
+        
+        Destinatario d2 = new Destinatario(cargo, area, id, doc, nombres, apellidos, correo, telefono);
+        
+        arrayListDestinatarios.add(d1);
+        arrayListDestinatarios.add(d2);
+        
+        return arrayListDestinatarios;
+    }
 }

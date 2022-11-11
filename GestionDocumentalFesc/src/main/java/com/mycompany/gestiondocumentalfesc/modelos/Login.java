@@ -11,6 +11,12 @@ public class Login {
 
     public Login() {
     }
+    
+    public Login(String nombreUsuario, String contraseña, int idUsuario) {
+        this.nombreUsuario = nombreUsuario;
+        this.contraseña = contraseña;
+        this.idUsuario = idUsuario;
+    }
 
     public Login(int id, String nombreUsuario, String contraseña, int idUsuario) {
         this.id = id;
