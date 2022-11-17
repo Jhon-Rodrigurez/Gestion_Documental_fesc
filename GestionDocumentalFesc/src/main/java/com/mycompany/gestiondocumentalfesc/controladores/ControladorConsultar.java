@@ -6,13 +6,14 @@ package com.mycompany.gestiondocumentalfesc.controladores;
 
 import com.mycompany.gestiondocumentalfesc.RenderImgJTable.RenderImg;
 import com.mycompany.gestiondocumentalfesc.modelos.*;
-import com.mycompany.gestiondocumentalfesc.vistas.JFrameConsultar;
+import com.mycompany.gestiondocumentalfesc.vistas.*;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -58,6 +59,14 @@ public class ControladorConsultar implements ActionListener{
                 datos = ctEmpresa.getInfoDocumentos(identificacion, filtro, filtroFecha);
                 mostrarConsulta(false);
             }
+        } else if (e.getSource() == jFrameConsultar.jTbRegistrarC) {
+            
+            JFrameRegistrar rgf = new JFrameRegistrar();
+            rgf.setVisible(true);
+            rgf.pack();
+            rgf.setLocationRelativeTo(null);
+            rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            rgf.dispose();
         }
     }
 
