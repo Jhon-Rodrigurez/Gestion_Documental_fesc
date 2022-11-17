@@ -116,10 +116,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtAsunto" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtNumRadicado" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNumAnexos" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtAsunto" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="txtNumAnexos" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -333,9 +335,6 @@
                   </Border>
                 </Property>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Estudiante"/>
-              </AccessibilityProperties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -576,14 +575,14 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="txtNombreEmpleadoRemitente" min="-2" pref="225" max="-2" attributes="0"/>
                               <EmptySpace pref="18" max="32767" attributes="0"/>
-                              <Component id="txtTelefonoRemitente1" min="-2" pref="225" max="-2" attributes="0"/>
+                              <Component id="txtTelefonoCompaniaRemitente" min="-2" pref="225" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="txtDocRemitente1" min="-2" pref="225" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtSemestre1" min="-2" pref="225" max="-2" attributes="0"/>
+                              <Component id="jTextFieldNIT" min="-2" pref="225" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtCorreoEstudianteRemitente1" min="-2" pref="225" max="-2" attributes="0"/>
+                              <Component id="txtCorreoCompaniaRemitente" min="-2" pref="225" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -600,15 +599,15 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtSemestre1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="jTextFieldNIT" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="txtDocRemitente1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="txtCorreoEstudianteRemitente1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="txtCorreoCompaniaRemitente" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jTextFieldNombreCompania" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="txtNombreEmpleadoRemitente" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="txtTelefonoRemitente1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="txtTelefonoCompaniaRemitente" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="136" max="32767" attributes="0"/>
                       <Component id="jtbGuardarDatos3" min="-2" pref="37" max="-2" attributes="0"/>
@@ -632,11 +631,11 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtSemestre1">
+            <Component class="javax.swing.JTextField" name="jTextFieldNIT">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder justification="1" position="2" title="Semestre">
+                    <TitledBorder justification="1" position="2" title="Nit">
                       <Font PropertyName="font" name="Arial" size="12" style="1"/>
                     </TitledBorder>
                   </Border>
@@ -646,7 +645,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCorreoEstudianteRemitente1">
+            <Component class="javax.swing.JTextField" name="txtCorreoCompaniaRemitente">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -660,7 +659,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtTelefonoRemitente1">
+            <Component class="javax.swing.JTextField" name="txtTelefonoCompaniaRemitente">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">

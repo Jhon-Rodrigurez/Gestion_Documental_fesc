@@ -9,16 +9,15 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Lenovo
+ * @author Aula 104
  */
-public class JFrameUserRegister extends javax.swing.JFrame {
+public class JFrameRegistrarUsuario extends javax.swing.JFrame {
 
     /**
-     * Creates new form JFrameUserRegister
+     * Creates new form JFrameRegistrarUsuario
      */
-    public JFrameUserRegister() {
+    public JFrameRegistrarUsuario() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -46,9 +45,6 @@ public class JFrameUserRegister extends javax.swing.JFrame {
         jPasswordField_ConContrasena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("REGISTRAR USUARIO");
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -75,7 +71,7 @@ public class JFrameUserRegister extends javax.swing.JFrame {
 
         jLabelRegistrarCuenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelRegistrarCuenta.setText("Click aquí para iniciar sesion");
-        jLabelRegistrarCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelRegistrarCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabelRegistrarCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelRegistrarCuentaMouseClicked(evt);
@@ -179,31 +175,50 @@ public class JFrameUserRegister extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 488, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarUsuarioActionPerformed
+
+        String nombre = jTextField_Nombre.getText();
+        String apellido = jTextField_Apellido.getText();
+        String nombreUsuario = jTextField_NU.getText();
+        String contrasena = String.valueOf(jPasswordField_Contrasena.getPassword());
+        String confContrasena = String.valueOf(jPasswordField_ConContrasena.getPassword());
+
+        PreparedStatement st;
+        String query = " ";
+    }//GEN-LAST:event_jButtonRegistrarUsuarioActionPerformed
+
     private void jLabelRegistrarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRegistrarCuentaMouseClicked
-        JFrameFormaLogin lgf = new JFrameFormaLogin();
+        JFrameLogin lgf = new JFrameLogin();
         lgf.setVisible(true);
         lgf.pack();
         lgf.setLocationRelativeTo(null);
         lgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_jLabelRegistrarCuentaMouseClicked
-
-    private void jButtonRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarUsuarioActionPerformed
-        
-        String nombre = jTextField_Nombre.getText();
-        String apellido = jTextField_Apellido.getText();
-        String nombreUsuario = jTextField_NU.getText();
-        String contrasena = String.valueOf(jPasswordField_Contrasena.getPassword());
-        String confContrasena = String.valueOf(jPasswordField_ConContrasena.getPassword());
-        
-        PreparedStatement st;
-        String query = " ";
-    }//GEN-LAST:event_jButtonRegistrarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,13 +237,13 @@ public class JFrameUserRegister extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameUserRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameRegistrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameUserRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameRegistrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameUserRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameRegistrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameUserRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameRegistrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -236,7 +251,7 @@ public class JFrameUserRegister extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameUserRegister().setVisible(true);
+                new JFrameRegistrarUsuario().setVisible(true);
             }
         });
     }

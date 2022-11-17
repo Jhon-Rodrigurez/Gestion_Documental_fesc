@@ -159,7 +159,7 @@ public class ControladorConsultar implements ActionListener{
     
     public Image getImagen(String ruta) {
         try {
-            ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(ruta));
+            ImageIcon icon = new ImageIcon(getClass().getResource(ruta));
             Image mainIcon = icon.getImage();
             return mainIcon;
         } catch (Exception e) {

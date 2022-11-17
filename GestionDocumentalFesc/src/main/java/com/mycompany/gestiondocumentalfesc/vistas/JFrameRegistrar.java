@@ -4,6 +4,9 @@
  */
 package com.mycompany.gestiondocumentalfesc.vistas;
 
+import java.io.File;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Familia
@@ -51,9 +54,9 @@ public class JFrameRegistrar extends javax.swing.JFrame {
         jtbGuardarDatos2 = new javax.swing.JToggleButton();
         jPanel3 = new javax.swing.JPanel();
         txtDocRemitente1 = new javax.swing.JTextField();
-        txtSemestre1 = new javax.swing.JTextField();
-        txtCorreoEstudianteRemitente1 = new javax.swing.JTextField();
-        txtTelefonoRemitente1 = new javax.swing.JTextField();
+        jTextFieldNIT = new javax.swing.JTextField();
+        txtCorreoCompaniaRemitente = new javax.swing.JTextField();
+        txtTelefonoCompaniaRemitente = new javax.swing.JTextField();
         jTextFieldNombreCompania = new javax.swing.JTextField();
         txtNombreEmpleadoRemitente = new javax.swing.JTextField();
         jtbGuardarDatos3 = new javax.swing.JToggleButton();
@@ -184,10 +187,11 @@ public class JFrameRegistrar extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAsunto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNumRadicado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNumAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNumRadicado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtAsunto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNumAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jDateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,8 +212,6 @@ public class JFrameRegistrar extends javax.swing.JFrame {
                 .addComponent(jtbGuardarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(39, Short.MAX_VALUE))
         );
-
-        jComboBoxTipoRadicado1.getAccessibleContext().setAccessibleName("Estudiante");
 
         jTabbedPane1.addTab("Documento", jPanel1);
 
@@ -275,11 +277,11 @@ public class JFrameRegistrar extends javax.swing.JFrame {
 
         txtDocRemitente1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Documento", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        txtSemestre1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Semestre", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jTextFieldNIT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nit", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        txtCorreoEstudianteRemitente1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Correo", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtCorreoCompaniaRemitente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Correo", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        txtTelefonoRemitente1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Telefono", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtTelefonoCompaniaRemitente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Telefono", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         jTextFieldNombreCompania.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre de compañia", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
@@ -300,13 +302,13 @@ public class JFrameRegistrar extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(txtNombreEmpleadoRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(txtTelefonoRemitente1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTelefonoCompaniaRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(txtDocRemitente1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtSemestre1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldNIT, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCorreoEstudianteRemitente1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCorreoCompaniaRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -318,14 +320,14 @@ public class JFrameRegistrar extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSemestre1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNIT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDocRemitente1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCorreoEstudianteRemitente1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCorreoCompaniaRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldNombreCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombreEmpleadoRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefonoRemitente1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTelefonoCompaniaRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(jtbGuardarDatos3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
@@ -517,6 +519,8 @@ public class JFrameRegistrar extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -542,6 +546,7 @@ public class JFrameRegistrar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    public static javax.swing.JTextField jTextFieldNIT;
     public static javax.swing.JTextField jTextFieldNombreCompania;
     public static javax.swing.JToggleButton jtbGuardarDatos;
     public static javax.swing.JToggleButton jtbGuardarDatos1;
@@ -551,9 +556,9 @@ public class JFrameRegistrar extends javax.swing.JFrame {
     public static javax.swing.JTextField txtAsunto;
     public static javax.swing.JTextField txtCargo;
     public static javax.swing.JTextField txtCarrera;
+    public static javax.swing.JTextField txtCorreoCompaniaRemitente;
     public static javax.swing.JTextField txtCorreoDestinatario;
     public static javax.swing.JTextField txtCorreoEstudianteRemitente;
-    public static javax.swing.JTextField txtCorreoEstudianteRemitente1;
     public static javax.swing.JTextField txtDocDestinatario;
     public static javax.swing.JTextField txtDocRemitente;
     public static javax.swing.JTextField txtDocRemitente1;
@@ -564,9 +569,8 @@ public class JFrameRegistrar extends javax.swing.JFrame {
     public static javax.swing.JTextField txtNumAnexos;
     public static javax.swing.JTextField txtNumRadicado;
     public static javax.swing.JTextField txtSemestre;
-    public static javax.swing.JTextField txtSemestre1;
+    public static javax.swing.JTextField txtTelefonoCompaniaRemitente;
     public static javax.swing.JTextField txtTelefonoDestinatario;
     public static javax.swing.JTextField txtTelefonoRemitente;
-    public static javax.swing.JTextField txtTelefonoRemitente1;
     // End of variables declaration//GEN-END:variables
 }
