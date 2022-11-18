@@ -242,8 +242,8 @@ public class Documento {
         ArrayList<Documento> arrayListDocumentos = new ArrayList<>();
         
         int id = 1;
-        String nomDoc = "Despliegue en Heroku de un Backend.pdf";
-        String rutaDoc = "C:\\Users\\Familia\\Documents\\Docs\\Despliegue en Heroku de un Backend.pdf";
+        String nomDoc = "DAVID AYALA SMMLV EN COLOMBIA.pdf";
+        String rutaDoc = "C:\\Users\\Aula 103\\pdf\\DAVID AYALA SMMLV EN COLOMBIA.pdf";
         long dateTime = System.currentTimeMillis();
         Timestamp fecha = new Timestamp(dateTime);
         String numRad = "3245";
@@ -258,9 +258,9 @@ public class Documento {
         
         Documento doc1 = new Documento(id, nomDoc, rutaDoc, fecha, numRad, tpRad, asunto, anexos, reqRes, clDoc, idRemitente, idDestinatario, idRespuesta);
         
-        id = 1;
+        id = 2;
         nomDoc = "previo1_sistemas operativos.pdf";
-        rutaDoc = "C:\\Users\\Familia\\Documents\\Docs\\previo1_sistemas operativos.pdf";
+        rutaDoc = "C:\\Users\\Aula 103\\pdf\\Respuestas taller.pdf";
         dateTime = System.currentTimeMillis();
         fecha = new Timestamp(dateTime);
         numRad = "7436";

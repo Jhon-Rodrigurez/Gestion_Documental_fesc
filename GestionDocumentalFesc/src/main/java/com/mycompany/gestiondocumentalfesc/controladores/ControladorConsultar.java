@@ -4,6 +4,7 @@
  */
 package com.mycompany.gestiondocumentalfesc.controladores;
 
+import com.mycompany.gestiondocumentalfesc.RenderImgJTable.ControladorTabla;
 import com.mycompany.gestiondocumentalfesc.RenderImgJTable.RenderImg;
 import com.mycompany.gestiondocumentalfesc.modelos.*;
 import com.mycompany.gestiondocumentalfesc.vistas.*;
@@ -26,6 +27,7 @@ public class ControladorConsultar implements ActionListener{
     Datos datos;
     ControladorEstudianteRemitente ctEstudiante;
     ControladorEmpresaRemitente ctEmpresa;
+    ControladorTabla ctTb;
     DefaultTableModel tableModelConsultar;
     
     public ControladorConsultar(JFrameConsultar jFrameConsultar) {
@@ -59,6 +61,7 @@ public class ControladorConsultar implements ActionListener{
                 datos = ctEmpresa.getInfoDocumentos(identificacion, filtro, filtroFecha);
                 mostrarConsulta(false);
             }
+            ctTb = new ControladorTabla(jFrameConsultar.jTablaC, datos);
         } else if (e.getSource() == jFrameConsultar.jTbRegistrarC) {
             
             JFrameRegistrar rgf = new JFrameRegistrar();
@@ -107,17 +110,17 @@ public class ControladorConsultar implements ActionListener{
                 fila[3] = des.getCorreo();
                 fila[4] = des.getTelefono();
                 
-                fila[5] = doc.getFecha();
+                fila[5] = doc.getId();
                 fila[6] = doc.getNombreArchivo();
                 
                 File pdf = new File(doc.getRutaArchivo());
                 
                 if (pdf.exists()) {
-                    fila[7] = new JButton(iconPdf);
-                    fila[8] = new JButton(iconVs);
+                    fila[7] = new JButton("ver");
+                    fila[8] = new JButton("des");
                 } else {
-                    fila[7] = new JButton(iconEl);
-                    fila[8] = new JButton(iconEl);
+                    fila[7] = new JButton("Vacio");
+                    fila[8] = new JButton("Vacio");
                 }
                 tableModelConsultar.addRow(fila);
             }
@@ -148,7 +151,7 @@ public class ControladorConsultar implements ActionListener{
         tableModelConsultar.addColumn("correo destinatario");
         tableModelConsultar.addColumn("telefono destinatario");
         
-        tableModelConsultar.addColumn("fecha");
+        tableModelConsultar.addColumn("id Documento");
         tableModelConsultar.addColumn("nombre documento");
         tableModelConsultar.addColumn("ver");
         tableModelConsultar.addColumn("descargar");
