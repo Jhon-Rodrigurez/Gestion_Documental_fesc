@@ -19,9 +19,11 @@ import java.util.Date;
 public class ControladorRegistrar implements ActionListener {
     
     ControladorDocumento ctDoc;
+    JFrameRegistrar jFrameRegistrar;
     
-    public ControladorRegistrar() {
+    public ControladorRegistrar(JFrameRegistrar jFrameRegistrar) {
         this.ctDoc = new ControladorDocumento();
+        this.jFrameRegistrar = new JFrameRegistrar();
     }
 
     @Override

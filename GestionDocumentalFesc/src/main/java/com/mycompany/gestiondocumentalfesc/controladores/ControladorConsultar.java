@@ -5,17 +5,11 @@
 package com.mycompany.gestiondocumentalfesc.controladores;
 
 import com.mycompany.gestiondocumentalfesc.RenderImgJTable.ControladorTabla;
-import com.mycompany.gestiondocumentalfesc.RenderImgJTable.RenderImg;
 import com.mycompany.gestiondocumentalfesc.modelos.*;
 import com.mycompany.gestiondocumentalfesc.vistas.*;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,182 +22,55 @@ public class ControladorConsultar implements ActionListener{
     ControladorEstudianteRemitente ctEstudiante;
     ControladorEmpresaRemitente ctEmpresa;
     ControladorTabla ctTb;
-    DefaultTableModel tableModelConsultar;
     
     public ControladorConsultar(JFrameConsultar jFrameConsultar) {
         this.jFrameConsultar = jFrameConsultar;
         this.datos = new Datos();
         this.ctEstudiante = new ControladorEstudianteRemitente();
         this.ctEmpresa = new ControladorEmpresaRemitente();
-        this.tableModelConsultar = new DefaultTableModel();
     }
     
     public void inicio() {
         setCbFiltro();
         setCbTpEntidad();
-        jFrameConsultar.jTbConsultar.addActionListener(this);
+        jFrameConsultar.jTbConsultarC.addActionListener(this);
+        jFrameConsultar.jTbRegistrarC.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        if (e.getSource() == jFrameConsultar.jTbConsultar) {
+        if (e.getSource() == jFrameConsultar.jTbConsultarC) {
             
             String tpEntidad = jFrameConsultar.jCbTipoEntidadC.getSelectedItem().toString();
             String identificacion = jFrameConsultar.jTfIdentificacionC.getText();
             String filtro = jFrameConsultar.jCbFiltoC.getSelectedItem().toString();
             String filtroFecha = jFrameConsultar.jTfFiltroFechaC.getText();
+            boolean b = false;
             
             if (tpEntidad.equals("Estudiante")) {
                 datos = ctEstudiante.getInfoDocumentos(identificacion, filtro, filtroFecha);
-                mostrarConsulta(true);
+                b = true;
             } else {
                 datos = ctEmpresa.getInfoDocumentos(identificacion, filtro, filtroFecha);
-                mostrarConsulta(false);
             }
+            
             ctTb = new ControladorTabla(jFrameConsultar.jTablaC, datos);
+            ctTb.mostrarConsulta(b);
+            
         } else if (e.getSource() == jFrameConsultar.jTbRegistrarC) {
             
-            JFrameRegistrar rgf = new JFrameRegistrar();
-            rgf.setVisible(true);
-            rgf.pack();
-            rgf.setLocationRelativeTo(null);
-            rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            rgf.dispose();
-        }
-    }
-
-    public void mostrarConsulta(boolean e) {
-        setColumnsJTableC(e);
-        limpiarjTablaC();
-        
-        ImageIcon iconPdf = null;
-        ImageIcon iconVs = null;
-        ImageIcon iconEl = null;
-        
-        if (getImagen("/imagen/32pdf.png") != null && getImagen("/imagen/visualizar.png") != null && getImagen("/imagen/eliminar.png") != null) {
-            iconPdf = new ImageIcon(getImagen("/imagen/32pdf.png"));
-            iconVs = new ImageIcon(getImagen("/imagen/visualizar.png"));
-            iconEl = new ImageIcon(getImagen("/imagen/eliminar.png"));
-        }
-        
-        if (datos.getArrayListDocumentos().size() > 0) {
-            for (int i = 0; i < datos.getArrayListDocumentos().size(); i++) {
-                Object[] fila = new Object[9];
-                Documento doc = datos.getArrayListDocumentos().get(i);
-                Destinatario des = datos.getArrayListDestinatarios().get(i);
-                
-                if (e) {
-                    EstudianteRemitente est = datos.getArrayListEstudianteRemitentes().get(i);
-                    
-                    fila[0] = getCarrera(est.getCarrera());
-                    fila[1] = est.getSemestre();
-                    
-                } else {
-                    EmpresaRemitente emp = datos.getArrayListEmpresaRemitentes().get(i);
-                    
-                    fila[0] = emp.getNombres();
-                    fila[1] = emp.getCorreo();
-                }
-                
-                fila[2] = des.getNombres();
-                fila[3] = des.getCorreo();
-                fila[4] = des.getTelefono();
-                
-                fila[5] = doc.getId();
-                fila[6] = doc.getNombreArchivo();
-                
-                File pdf = new File(doc.getRutaArchivo());
-                
-                if (pdf.exists()) {
-                    fila[7] = new JButton("ver");
-                    fila[8] = new JButton("des");
-                } else {
-                    fila[7] = new JButton("Vacio");
-                    fila[8] = new JButton("Vacio");
-                }
-                tableModelConsultar.addRow(fila);
-            }
-            jFrameConsultar.jTablaC.setModel(tableModelConsultar);
+            JFrameRegistrar jFReg = new JFrameRegistrar();
+            ControladorRegistrar ctReg = new ControladorRegistrar(jFReg);
+            jFReg.setVisible(true);
+            jFrameConsultar.setVisible(false);
+//            jFReg.pack();
+//            jFReg.setLocationRelativeTo(null);
+//            jFReg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            jFReg.dispose();
         }
     }
     
-    public void setColumnsJTableC(boolean e) {
-        
-        jFrameConsultar.jTablaC.setDefaultRenderer(Object.class, new RenderImg());
-        tableModelConsultar = new DefaultTableModel() {
-            
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        
-        if (e) {
-            tableModelConsultar.addColumn("carrera");
-            tableModelConsultar.addColumn("semestre");
-        } else {
-            tableModelConsultar.addColumn("nombre empleado");
-            tableModelConsultar.addColumn("correo");
-        }
-        
-        tableModelConsultar.addColumn("nombre destinatario");
-        tableModelConsultar.addColumn("correo destinatario");
-        tableModelConsultar.addColumn("telefono destinatario");
-        
-        tableModelConsultar.addColumn("id Documento");
-        tableModelConsultar.addColumn("nombre documento");
-        tableModelConsultar.addColumn("ver");
-        tableModelConsultar.addColumn("descargar");
-        
-        jFrameConsultar.jTablaC.setModel(tableModelConsultar);
-        jFrameConsultar.jTablaC.setRowHeight(32);
-    }
-    
-    public Image getImagen(String ruta) {
-        try {
-            ImageIcon icon = new ImageIcon(getClass().getResource(ruta));
-            Image mainIcon = icon.getImage();
-            return mainIcon;
-        } catch (Exception e) {
-            System.err.println("Error al cargar imagenes: " + e.getMessage());
-        }
-        return null;
-    }
-    
-    public String getCarrera(int c) {
-        
-        String carrera;
-        
-        switch(c) {
-            case 1:
-                carrera = "Diseño grafico";
-                break;
-            case 2:
-                carrera = "Diseño de modas";
-                break;
-            case 3:
-                carrera = "Hoteleria y turismo";
-                break;
-            case 4:
-                carrera = "Ingenieria de software";
-                break;
-            case 5:
-                carrera = "Negocios internacionales";
-                break;
-            case 6:
-                carrera = "Administracion financiera";
-                break;
-            case 7:
-                carrera = "Logistica empresarial";
-                break;
-            default:
-                carrera = "N/A";
-                break;
-        }
-        return carrera;
-    }
-
     public void setCbFiltro() {
         jFrameConsultar.jCbFiltoC.removeAllItems();
         jFrameConsultar.jCbFiltoC.addItem("Selecionar");
@@ -218,14 +85,5 @@ public class ControladorConsultar implements ActionListener{
         jFrameConsultar.jCbTipoEntidadC.addItem("Selecionar");
         jFrameConsultar.jCbTipoEntidadC.addItem("Estudiante");
         jFrameConsultar.jCbTipoEntidadC.addItem("Empresa");
-    }
-    
-    public void limpiarjTablaC() {
-        
-        if (tableModelConsultar.getRowCount() > 0) {
-            for (int i = tableModelConsultar.getRowCount() - 1; i > -1; i--) {
-                tableModelConsultar.removeRow(i);
-            }
-        }
     }
 }

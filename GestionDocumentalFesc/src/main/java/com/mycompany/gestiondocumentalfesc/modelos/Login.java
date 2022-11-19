@@ -5,22 +5,14 @@ package com.mycompany.gestiondocumentalfesc.modelos;
 public class Login {
     
     private int id;
-    private String nombreUsuario;
     private String contraseña;
     private int idUsuario;
 
     public Login() {
     }
-    
-    public Login(String nombreUsuario, String contraseña, int idUsuario) {
-        this.nombreUsuario = nombreUsuario;
-        this.contraseña = contraseña;
-        this.idUsuario = idUsuario;
-    }
 
-    public Login(int id, String nombreUsuario, String contraseña, int idUsuario) {
+    public Login(int id, String contraseña, int idUsuario) {
         this.id = id;
-        this.nombreUsuario = nombreUsuario;
         this.contraseña = contraseña;
         this.idUsuario = idUsuario;
     }
@@ -31,14 +23,6 @@ public class Login {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
     }
 
     public String getContraseña() {

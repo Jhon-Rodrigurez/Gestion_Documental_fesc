@@ -4,7 +4,6 @@ package com.mycompany.gestiondocumentalfesc.modelos;
 
 public class Persona {
     
-    protected int id;
     protected String documento;
     protected String nombres;
     protected String apellidos;
@@ -13,7 +12,7 @@ public class Persona {
     
     public Persona() {
     }
-    
+
     public Persona(String documento, String nombres, String apellidos, String correo, String telefono) {
         this.documento = documento;
         this.nombres = nombres;
@@ -21,24 +20,7 @@ public class Persona {
         this.correo = correo;
         this.telefono = telefono;
     }
-
-    public Persona(int id, String documento, String nombres, String apellidos, String correo, String telefono) {
-        this.id = id;
-        this.documento = documento;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.correo = correo;
-        this.telefono = telefono;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    
     public String getDocumento() {
         return documento;
     }
