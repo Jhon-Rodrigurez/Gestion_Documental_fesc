@@ -187,12 +187,6 @@ public class ControladorRegistrar implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Error al subir datos\n" + ex);
             }
         }
-        
-        if(e.getSource() == JFrameRegistrar.jButtonActualizar) {
-            JFrameRegistrar main = new JFrameRegistrar();
-            main.setVisible(true);
-            this.dispose(); 
-        }
     }
     
     public static String getJchReqRespuesta() {
