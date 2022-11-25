@@ -1,6 +1,7 @@
 
 package com.mycompany.gestiondocumentalfesc.vistas;
 
+import static com.mycompany.gestiondocumentalfesc.RenderImgJTable.ControladorTabla.copyFile;
 import com.mycompany.gestiondocumentalfesc.conexion.Conexion;
 import com.mycompany.gestiondocumentalfesc.modelos.Destinatario;
 import com.mycompany.gestiondocumentalfesc.modelos.EmpresaRemitente;
@@ -9,6 +10,7 @@ import com.mycompany.gestiondocumentalfesc.modelos.ListadoDestinatarios;
 import com.mycompany.gestiondocumentalfesc.modelos.ListadoEmpresas;
 import com.mycompany.gestiondocumentalfesc.modelos.ListadoEstudiantes;
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -516,10 +518,20 @@ public class JFrameRegistrar extends javax.swing.JFrame {
             else {
                 txtNombreArchivo.setText(archivo.getAbsolutePath());
             }
+            File directorio = new File("C:\\archivos");
+        
+        
+        if (!directorio.exists()) {
+           directorio.mkdir();     
         }
-        
-        
-        
+            try {
+                File pdfDes = new File(directorio.getAbsolutePath()+ "\\" +archivo.getName());
+                copyFile(archivo,pdfDes);
+                
+            } catch (IOException ex) {
+                    System.out.println("Error");
+            }
+        }   
     }//GEN-LAST:event_jButtonSeleccionarArchivoActionPerformed
 
     private void jComboBoxSeleccionarDestinatarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSeleccionarDestinatarioActionPerformed

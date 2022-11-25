@@ -182,12 +182,12 @@ public class JFrameConsultar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTbConsultarCActionPerformed
 
     private void jTbRegistrarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTbRegistrarCActionPerformed
-        // JFrameRegistrar rgf = new JFrameRegistrar();
-        // rgf.setVisible(true);
-        // rgf.pack();
-        // rgf.setLocationRelativeTo(null);
-        // rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // this.dispose();
+         JFrameRegistrar rgf = new JFrameRegistrar();
+         rgf.setVisible(true);
+         rgf.pack();
+         rgf.setLocationRelativeTo(null);
+         rgf.setDefaultCloseOperation(JFrameRegistrar.EXIT_ON_CLOSE);
+         this.dispose();
     }//GEN-LAST:event_jTbRegistrarCActionPerformed
 
     /**
