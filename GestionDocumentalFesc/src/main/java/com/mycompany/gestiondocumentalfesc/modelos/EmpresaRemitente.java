@@ -23,7 +23,7 @@ public class EmpresaRemitente extends Persona {
         this.nombreEmpresa = nombreEmpresa;
         this.nit = nit;
     }
-
+    
     public String getNombreEmpresa() {
         return nombreEmpresa;
     }
@@ -41,13 +41,13 @@ public class EmpresaRemitente extends Persona {
     }
     
     
-    public static ArrayList<EmpresaRemitente> getEstudianteRemitentes() {
+    public static ArrayList<EmpresaRemitente> getEmpresasRemitentes() {
         
         ArrayList<EmpresaRemitente> arrayListEmpresas = new ArrayList<>();
         
         String nomEmpresa = "exito";
         String nit = "345345";
-        int id = 1;
+        int id = 10;
         String doc = "309823409";
         String nombres = "veronica";
         String apellidos = "aguilar";
@@ -58,7 +58,7 @@ public class EmpresaRemitente extends Persona {
         
         nomEmpresa = "caracol";
         nit = "234234";
-        id = 2;
+        id = 20;
         doc = "23049u823";
         nombres = "mariano";
         apellidos = "Velasques";
