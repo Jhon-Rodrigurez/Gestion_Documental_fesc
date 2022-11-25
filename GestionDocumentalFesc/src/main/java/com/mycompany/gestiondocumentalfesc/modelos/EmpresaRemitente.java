@@ -41,7 +41,7 @@ public class EmpresaRemitente extends Persona {
     }
     
     
-    public static ArrayList<EmpresaRemitente> getEstudianteRemitentes() {
+    public static ArrayList<EmpresaRemitente> getEmpresasRemitentes() {
         
         ArrayList<EmpresaRemitente> arrayListEmpresas = new ArrayList<>();
         

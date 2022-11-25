@@ -315,14 +315,14 @@ public class Documento {
         dateTime = System.currentTimeMillis();
         fecha = new Timestamp(dateTime);
         numRad = "0983";
-        tpRad = false;
+        tpRad = true;
         asunto = "ejemplo3";
         anexos = "ejemplo3";
         reqRes = false;
         clDoc = 7;
         idRemitente = 20;
         idDestinatario = 3;
-        idRespuesta = 4;
+        idRespuesta = 0;
         
         Documento doc5 = new Documento(id, nomDoc, rutaDoc, fecha, numRad, tpRad, asunto, anexos, reqRes, clDoc, idRemitente, idDestinatario, idRespuesta);
         
