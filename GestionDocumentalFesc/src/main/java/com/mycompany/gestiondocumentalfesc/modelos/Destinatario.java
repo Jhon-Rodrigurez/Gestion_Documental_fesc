@@ -18,6 +18,12 @@ public class Destinatario extends Persona{
         this.area = area;
     }
 
+    public Destinatario(String cargo, String area, int id, String documento, String nombres, String apellidos, String correo, String telefono) {
+        super(id, documento, nombres, apellidos, correo, telefono);
+        this.cargo = cargo;
+        this.area = area;
+    }
+    
     public String getCargo() {
         return cargo;
     }
@@ -34,32 +40,46 @@ public class Destinatario extends Persona{
         this.area = area;
     }
 
-    public static ArrayList<Destinatario> getEstudianteRemitentes() {
+    public static ArrayList<Destinatario> getDestinatarios() {
         
         ArrayList<Destinatario> arrayListDestinatarios = new ArrayList<>();
         
         String cargo = "oficinista";
         String area = "caja";
+        int id = 1;
         String doc = "309823234";
         String nombres = "jimena";
         String apellidos = "aguilar";
         String correo = "jimena@gmail.com";
         String telefono = "30008752234";
         
-        Destinatario d1 = new Destinatario(cargo, area, doc, nombres, apellidos, correo, telefono);
+        Destinatario d1 = new Destinatario(cargo, area, id, doc, nombres, apellidos, correo, telefono);
         
-        cargo = "vicente";
+        cargo = "vicerector";
         area = "rectoria";
+        id = 2;
         doc = "23098423";
         nombres = "luis";
         apellidos = "Velasques";
         correo = "luisV@gmail.com";
         telefono = "324987334";
         
-        Destinatario d2 = new Destinatario(cargo, area, doc, nombres, apellidos, correo, telefono);
+        Destinatario d2 = new Destinatario(cargo, area, id, doc, nombres, apellidos, correo, telefono);
+        
+        cargo = "recepcionista";
+        area = "caja";
+        id = 3;
+        doc = "23098915";
+        nombres = "Maria";
+        apellidos = "Ramirez";
+        correo = "mariaR@gmail.com";
+        telefono = "324987334";
+        
+        Destinatario d3 = new Destinatario(cargo, area, id, doc, nombres, apellidos, correo, telefono);
         
         arrayListDestinatarios.add(d1);
         arrayListDestinatarios.add(d2);
+        arrayListDestinatarios.add(d3);
         
         return arrayListDestinatarios;
     }

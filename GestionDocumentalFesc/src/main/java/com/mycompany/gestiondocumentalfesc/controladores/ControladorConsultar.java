@@ -10,6 +10,7 @@ import com.mycompany.gestiondocumentalfesc.vistas.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -46,17 +47,20 @@ public class ControladorConsultar implements ActionListener{
             String identificacion = jFrameConsultar.jTfIdentificacionC.getText();
             String filtro = jFrameConsultar.jCbFiltoC.getSelectedItem().toString();
             String filtroFecha = jFrameConsultar.jTfFiltroFechaC.getText();
-            boolean b = false;
             
             if (tpEntidad.equals("Estudiante")) {
                 datos = ctEstudiante.getInfoDocumentos(identificacion, filtro, filtroFecha);
-                b = true;
-            } else {
+                ctTb = new ControladorTabla(jFrameConsultar, datos);
+                ctTb.mostrarConsulta(true);
+                
+            } else if (tpEntidad.equals("Empresa")) {
                 datos = ctEmpresa.getInfoDocumentos(identificacion, filtro, filtroFecha);
+                ctTb = new ControladorTabla(jFrameConsultar, datos);
+                ctTb.mostrarConsulta(false);
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione el tipo de remitente");
             }
-            
-            ctTb = new ControladorTabla(jFrameConsultar.jTablaC, datos);
-            ctTb.mostrarConsulta(b);
             
         } else if (e.getSource() == jFrameConsultar.jTbRegistrarC) {
             

@@ -22,7 +22,7 @@ public class ControladorEmpresaRemitente {
     public Datos getInfoDocumentos(String identificacion, String filtro, String filtroFecha) {
         ArrayList<EmpresaRemitente> e = EmpresaRemitente.getEstudianteRemitentes();
         ArrayList<Documento> doc = Documento.getDocumentos();
-        ArrayList<Destinatario> dt = Destinatario.getEstudianteRemitentes();
+        ArrayList<Destinatario> dt = Destinatario.getDestinatarios();
         
         datos.setArrayListEmpresaRemitentes(e);
         datos.setArrayListDocumentos(doc);

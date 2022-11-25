@@ -18,13 +18,13 @@ public class Documento {
     private boolean reqRespuesta;
     private int tipoDocumento;
     private int remitenteId;
-    private int encargadoId;
+    private int destinatarioId;
     private int respuestaId;
 
     public Documento() {
     }
     
-    public Documento(String nombreArchivo, String rutaArchivo, Timestamp fecha, String numRadicado, boolean tipoRadicado, String asunto, String anexos, boolean reqRespuesta, int tipoDocumento, int remitenteId, int encargadoId, int respuestaId) {
+    public Documento(String nombreArchivo, String rutaArchivo, Timestamp fecha, String numRadicado, boolean tipoRadicado, String asunto, String anexos, boolean reqRespuesta, int tipoDocumento, int remitenteId, int destinatarioId, int respuestaId) {
         this.nombreArchivo = nombreArchivo;
         this.rutaArchivo = rutaArchivo;
         this.fecha = fecha;
@@ -35,11 +35,11 @@ public class Documento {
         this.reqRespuesta = reqRespuesta;
         this.tipoDocumento = tipoDocumento;
         this.remitenteId = remitenteId;
-        this.encargadoId = encargadoId;
+        this.destinatarioId = destinatarioId;
         this.respuestaId = respuestaId;
     }
     
-    public Documento(int id, String nombreArchivo, String rutaArchivo, Timestamp fecha, String numRadicado, boolean tipoRadicado, String asunto, String anexos, boolean reqRespuesta, int tipoDocumento, int remitenteId, int encargadoId, int respuestaId) {
+    public Documento(int id, String nombreArchivo, String rutaArchivo, Timestamp fecha, String numRadicado, boolean tipoRadicado, String asunto, String anexos, boolean reqRespuesta, int tipoDocumento, int remitenteId, int destinatarioId, int respuestaId) {
         this.id = id;
         this.nombreArchivo = nombreArchivo;
         this.rutaArchivo = rutaArchivo;
@@ -51,7 +51,7 @@ public class Documento {
         this.reqRespuesta = reqRespuesta;
         this.tipoDocumento = tipoDocumento;
         this.remitenteId = remitenteId;
-        this.encargadoId = encargadoId;
+        this.destinatarioId = destinatarioId;
         this.respuestaId = respuestaId;
     }
 
@@ -210,17 +210,17 @@ public class Documento {
     }
 
     /**
-     * @return the encargadoId
+     * @return the destinatarioId
      */
-    public int getEncargadoId() {
-        return encargadoId;
+    public int getDestinatarioId() {
+        return destinatarioId;
     }
 
     /**
-     * @param encargadoId the encargadoId to set
+     * @param destinatarioId the destinatarioId to set
      */
-    public void setEncargadoId(int encargadoId) {
-        this.encargadoId = encargadoId;
+    public void setDestinatarioId(int destinatarioId) {
+        this.destinatarioId = destinatarioId;
     }
 
     /**
@@ -242,8 +242,8 @@ public class Documento {
         ArrayList<Documento> arrayListDocumentos = new ArrayList<>();
         
         int id = 1;
-        String nomDoc = "DAVID AYALA SMMLV EN COLOMBIA.pdf";
-        String rutaDoc = "C:\\Users\\Aula 103\\pdf\\DAVID AYALA SMMLV EN COLOMBIA.pdf";
+        String nomDoc = "pdf1.pdf";
+        String rutaDoc = "C:\\Users\\Familia\\Documents\\pdf\\pdf1.pdf";
         long dateTime = System.currentTimeMillis();
         Timestamp fecha = new Timestamp(dateTime);
         String numRad = "3245";
@@ -254,24 +254,24 @@ public class Documento {
         int clDoc = 3;
         int idRemitente = 1;
         int idDestinatario = 1;
-        int idRespuesta = 2;
+        int idRespuesta = 0;
         
         Documento doc1 = new Documento(id, nomDoc, rutaDoc, fecha, numRad, tpRad, asunto, anexos, reqRes, clDoc, idRemitente, idDestinatario, idRespuesta);
         
         id = 2;
-        nomDoc = "previo1_sistemas operativos.pdf";
-        rutaDoc = "C:\\Users\\Aula 103\\pdf\\Respuestas taller.pdf";
+        nomDoc = "pdf2.pdf";
+        rutaDoc = "C:\\Users\\Familia\\Documents\\pdf\\pdf2.pdf";
         dateTime = System.currentTimeMillis();
         fecha = new Timestamp(dateTime);
         numRad = "7436";
         tpRad = false;
         asunto = "ejemplo2";
         anexos = "ejemplo2";
-        reqRes = true;
+        reqRes = false;
         clDoc = 2;
         idRemitente = 1;
         idDestinatario = 1;
-        idRespuesta = 0;
+        idRespuesta = 1;
         
         Documento doc2 = new Documento(id, nomDoc, rutaDoc, fecha, numRad, tpRad, asunto, anexos, reqRes, clDoc, idRemitente, idDestinatario, idRespuesta);
         
@@ -281,17 +281,18 @@ public class Documento {
         dateTime = System.currentTimeMillis();
         fecha = new Timestamp(dateTime);
         numRad = "0983";
-        tpRad = false;
+        tpRad = true;
         asunto = "ejemplo3";
         anexos = "ejemplo3";
         reqRes = false;
         clDoc = 7;
         idRemitente = 2;
-        idDestinatario = 3;
+        idDestinatario = 2;
         idRespuesta = 0;
         
         Documento doc3 = new Documento(id, nomDoc, rutaDoc, fecha, numRad, tpRad, asunto, anexos, reqRes, clDoc, idRemitente, idDestinatario, idRespuesta);
         
+        id = 4;
         nomDoc = "pdf4.pdf";
         rutaDoc = "C:\\Users\\Familia\\Documents\\pdf\\pdf4.pdf";
         dateTime = System.currentTimeMillis();
@@ -306,11 +307,11 @@ public class Documento {
         idDestinatario = 3;
         idRespuesta = 0;
         
-        Documento doc4 = new Documento(nomDoc, rutaDoc, fecha, numRad, tpRad, asunto, anexos, reqRes, clDoc, idRemitente, idDestinatario, idRespuesta);
+        Documento doc4 = new Documento(id, nomDoc, rutaDoc, fecha, numRad, tpRad, asunto, anexos, reqRes, clDoc, idRemitente, idDestinatario, idRespuesta);
         
         id = 5;
-        nomDoc = "pdf3.pdf";
-        rutaDoc = "C:\\Users\\Familia\\Documents\\pdf\\pdf3.pdf";
+        nomDoc = "pdf5.pdf";
+        rutaDoc = "C:\\Users\\Familia\\Documents\\pdf\\pdf5.pdf";
         dateTime = System.currentTimeMillis();
         fecha = new Timestamp(dateTime);
         numRad = "0983";
@@ -319,15 +320,18 @@ public class Documento {
         anexos = "ejemplo3";
         reqRes = false;
         clDoc = 7;
-        idRemitente = 2;
+        idRemitente = 20;
         idDestinatario = 3;
-        idRespuesta = 0;
+        idRespuesta = 4;
         
         Documento doc5 = new Documento(id, nomDoc, rutaDoc, fecha, numRad, tpRad, asunto, anexos, reqRes, clDoc, idRemitente, idDestinatario, idRespuesta);
+        
         
         arrayListDocumentos.add(doc1);
         arrayListDocumentos.add(doc2);
         arrayListDocumentos.add(doc3);
+        arrayListDocumentos.add(doc4);
+        arrayListDocumentos.add(doc5);
         
         return arrayListDocumentos;
     }

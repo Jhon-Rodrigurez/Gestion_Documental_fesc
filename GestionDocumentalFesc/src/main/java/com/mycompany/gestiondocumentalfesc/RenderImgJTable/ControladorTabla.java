@@ -9,6 +9,7 @@ import com.mycompany.gestiondocumentalfesc.modelos.Destinatario;
 import com.mycompany.gestiondocumentalfesc.modelos.Documento;
 import com.mycompany.gestiondocumentalfesc.modelos.EmpresaRemitente;
 import com.mycompany.gestiondocumentalfesc.modelos.EstudianteRemitente;
+import com.mycompany.gestiondocumentalfesc.vistas.JFrameConsultar;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -20,7 +21,6 @@ import java.nio.file.StandardCopyOption;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,13 +29,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ControladorTabla implements MouseListener{
 
-    JTable tabla;
+    JFrameConsultar jframeC;
     Datos dt;
     DefaultTableModel tableModelConsultar;
 
-    public ControladorTabla(JTable tabla, Datos dt) {
-        this.tabla = tabla;
-        this.tabla.addMouseListener(this);
+    public ControladorTabla(JFrameConsultar jframeC, Datos dt) {
+        this.jframeC = jframeC;
+        this.jframeC.jTablaC.addMouseListener(this);
         this.dt = dt;
         this.tableModelConsultar = new DefaultTableModel();
     }
@@ -86,7 +86,7 @@ public class ControladorTabla implements MouseListener{
     
     public void setColumnsJTableC(boolean e) {
         
-        tabla.setDefaultRenderer(Object.class, new RenderImg());
+        jframeC.jTablaC.setDefaultRenderer(Object.class, new RenderImg());
         tableModelConsultar = new DefaultTableModel() {
             
             @Override
@@ -96,24 +96,81 @@ public class ControladorTabla implements MouseListener{
         };
         
         if (e) {
-            tableModelConsultar.addColumn("carrera");
-            tableModelConsultar.addColumn("semestre");
+            tableModelConsultar.addColumn("Nombres Estudiante");
+            tableModelConsultar.addColumn("Apellidos Estudiante");
+            tableModelConsultar.addColumn("correo Estudiante");
+            tableModelConsultar.addColumn("Telefono Estudiante");
+            tableModelConsultar.addColumn("carrera Estudiante");
+            tableModelConsultar.addColumn("semestre Estudiante");
         } else {
-            tableModelConsultar.addColumn("nombre empleado");
-            tableModelConsultar.addColumn("correo");
+            tableModelConsultar.addColumn("Nombres Empleado");
+            tableModelConsultar.addColumn("Apellidos Empleado");
+            tableModelConsultar.addColumn("correo Empresa");
+            tableModelConsultar.addColumn("Telefono Empresa");
+            tableModelConsultar.addColumn("nombre Empresa");
+            tableModelConsultar.addColumn("Nit Empresa");
         }
         
-        tableModelConsultar.addColumn("nombre destinatario");
-        tableModelConsultar.addColumn("correo destinatario");
-        tableModelConsultar.addColumn("telefono destinatario");
+        tableModelConsultar.addColumn("Nombres Destinatario");
+        tableModelConsultar.addColumn("Apellidos Destinatario");
+        tableModelConsultar.addColumn("correo Destinatario");
+        tableModelConsultar.addColumn("Telefono Destinatario");
+        tableModelConsultar.addColumn("Cargo Destinatario");
+        tableModelConsultar.addColumn("Area Destinatario");
         
         tableModelConsultar.addColumn("id Documento");
         tableModelConsultar.addColumn("nombre documento");
+        tableModelConsultar.addColumn("Fecha");
+        tableModelConsultar.addColumn("Num Radicado");
+        tableModelConsultar.addColumn("Tp Radicado");
+        tableModelConsultar.addColumn("Asunto");
+        tableModelConsultar.addColumn("Anexos");
+        tableModelConsultar.addColumn("Req Respuesta");
+        tableModelConsultar.addColumn("Tp Documento");
+        tableModelConsultar.addColumn("Respuesta");
+        
         tableModelConsultar.addColumn("ver");
         tableModelConsultar.addColumn("descargar");
         
-        tabla.setModel(tableModelConsultar);
-        tabla.setRowHeight(32);
+        jframeC.jTablaC.setModel(tableModelConsultar);
+        jframeC.jTablaC.setRowHeight(32);
+    }
+    
+    private Object getTpDoc(int tipoDocumento) {
+        
+        String tpDoc = "";
+        
+        switch (tipoDocumento) {
+            
+            case 1:
+                tpDoc = "Carta";
+                break;
+            case 2:
+                tpDoc = "Solicitud";
+                break;
+            case 3:
+                tpDoc = "Derecho de peticion";
+                break;
+            case 4:
+                tpDoc = "Citacion";
+                break;
+            case 5:
+                tpDoc = "Memorando";
+                break;
+            case 6:
+                tpDoc = "Caja";
+                break;
+            case 7:
+                tpDoc = "Factura";
+                break;
+            case 8:
+                tpDoc = "Remision";
+                break;
+            case 9:
+                tpDoc = "Paquete";
+                break;
+        }
+        return tpDoc;
     }
     
     public void mostrarConsulta(boolean e) {
@@ -129,44 +186,72 @@ public class ControladorTabla implements MouseListener{
             iconEl = new ImageIcon(getImagen("/imagen/eliminar.png"));
         }
         
-        if (dt.getArrayListDocumentos().size() > 0) {
+        if (dt != null) {
+            
+            if (dt.getArrayListDocumentos().size() > 0) {
             for (int i = 0; i < dt.getArrayListDocumentos().size(); i++) {
-                Object[] fila = new Object[9];
+                
+                try {
+                Object[] fila = new Object[24];
                 Documento doc = dt.getArrayListDocumentos().get(i);
                 Destinatario des = dt.getArrayListDestinatarios().get(i);
                 
                 if (e) {
                     EstudianteRemitente est = dt.getArrayListEstudianteRemitentes().get(i);
                     
-                    fila[0] = getCarrera(est.getCarrera());
-                    fila[1] = est.getSemestre();
+                    fila[0] = est.getNombres();
+                    fila[1] = est.getApellidos();
+                    fila[2] = est.getCorreo();
+                    fila[3] = est.getTelefono();
+                    fila[4] = getCarrera(est.getCarrera());
+                    fila[5] = est.getSemestre();
                     
                 } else {
                     EmpresaRemitente emp = dt.getArrayListEmpresaRemitentes().get(i);
                     
                     fila[0] = emp.getNombres();
-                    fila[1] = emp.getCorreo();
+                    fila[1] = emp.getApellidos();
+                    fila[2] = emp.getCorreo();
+                    fila[3] = emp.getTelefono();
+                    fila[4] = emp.getNombreEmpresa();
+                    fila[5] = emp.getNit();
+                    
                 }
                 
-                fila[2] = des.getNombres();
-                fila[3] = des.getCorreo();
-                fila[4] = des.getTelefono();
+                fila[6] = des.getNombres();
+                fila[7] = des.getApellidos();
+                fila[8] = des.getCorreo();
+                fila[9] = des.getTelefono();
+                fila[10] = des.getCargo();
+                fila[11] = des.getArea();
                 
-                fila[5] = doc.getId();
-                fila[6] = doc.getNombreArchivo();
+                fila[12] = doc.getId();
+                fila[13] = doc.getNombreArchivo();
+                fila[14] = doc.getFecha();
+                fila[15] = doc.getNumRadicado();
+                fila[16] = doc.isTipoRadicado()? "Entrega": "Respuesta";
+                fila[17] = doc.getAsunto();
+                fila[18] = doc.getAnexos();
+                fila[19] = doc.isReqRespuesta()? "Si": "No";
+                fila[20] = getTpDoc(doc.getTipoDocumento());
+                fila[21] = doc.getRespuestaId() > 0? doc.getRespuestaId() : "Sin Respuesta";
                 
                 File pdf = new File(doc.getRutaArchivo());
                 
                 if (pdf.exists()) {
-                    fila[7] = new JButton("ver");
-                    fila[8] = new JButton("des");
+                    fila[22] = new JButton("ver");
+                    fila[23] = new JButton("des");
                 } else {
-                    fila[7] = new JButton("Vacio");
-                    fila[8] = new JButton("Vacio");
+                    fila[22] = new JButton("Vacio");
+                    fila[23] = new JButton("Vacio");
                 }
                 tableModelConsultar.addRow(fila);
+                } catch (Exception ex) {
+                    System.out.println("i");
+                }
             }
-            tabla.setModel(tableModelConsultar);
+            jframeC.jTablaC.setModel(tableModelConsultar);
+            }
         }
     }
     
@@ -176,13 +261,13 @@ public class ControladorTabla implements MouseListener{
     
     @Override
     public void mouseClicked(MouseEvent e) {
-        int col = tabla.getColumnModel().getColumnIndexAtX(e.getX());
-        int row = e.getY() / tabla.getRowHeight();
+        int col = jframeC.jTablaC.getColumnModel().getColumnIndexAtX(e.getX());
+        int row = e.getY() / jframeC.jTablaC.getRowHeight();
         System.out.println("click");
-        if (row < tabla.getRowCount() && row >= 0 && col < tabla.getColumnCount() && col >= 0) {
+        if (row < jframeC.jTablaC.getRowCount() && row >= 0 && col < jframeC.jTablaC.getColumnCount() && col >= 0) {
             
-            int id = (int) tabla.getValueAt(row, 5);
-            Object value = tabla.getValueAt(row, col);
+            int id = (int) jframeC.jTablaC.getValueAt(row, 12);
+            Object value = jframeC.jTablaC.getValueAt(row, col);
             
             if (value instanceof JButton) {
                 
@@ -246,5 +331,5 @@ public class ControladorTabla implements MouseListener{
     public void mouseExited(MouseEvent e) {
         System.out.println("");
     }
-
+    
 }
