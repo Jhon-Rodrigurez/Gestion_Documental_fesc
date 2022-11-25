@@ -2,19 +2,20 @@
 
 package com.mycompany.gestiondocumentalfesc;
 
-import com.mycompany.gestiondocumentalfesc.controladores.ControladorRegistrar;
-import com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar;
+import com.mycompany.gestiondocumentalfesc.controladores.ControladorConsultar;
+import com.mycompany.gestiondocumentalfesc.vistas.JFrameConsultar;
 
 
 public class GestionDocumentalFesc {
 
     public static void main(String[] args) {
         
-        JFrameRegistrar jFrameRegistrar = new JFrameRegistrar();
+        JFrameConsultar jfc = new JFrameConsultar();
         
-        ControladorRegistrar controladorRegistrar = new ControladorRegistrar(jFrameRegistrar);
-        controladorRegistrar.iniciar();
+        ControladorConsultar ctC = new ControladorConsultar(jfc);
+        ctC.inicio();
         
-        jFrameRegistrar.setVisible(true);
+        jfc.setVisible(true);
+        jfc.setLocationRelativeTo(null);
     }
 }

@@ -68,8 +68,8 @@ public class ControladorConsultar implements ActionListener{
             ControladorRegistrar ctReg = new ControladorRegistrar(jFReg);
             jFReg.setVisible(true);
             jFrameConsultar.setVisible(false);
+            jFReg.setLocationRelativeTo(null);
 //            jFReg.pack();
-//            jFReg.setLocationRelativeTo(null);
 //            jFReg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //            jFReg.dispose();
         }
