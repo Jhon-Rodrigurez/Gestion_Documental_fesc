@@ -1,23 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.mycompany.gestiondocumentalfesc.vistas;
 
+import com.mycompany.gestiondocumentalfesc.conexion.Conexion;
+import com.mycompany.gestiondocumentalfesc.modelos.Destinatario;
+import com.mycompany.gestiondocumentalfesc.modelos.EmpresaRemitente;
+import com.mycompany.gestiondocumentalfesc.modelos.EstudianteRemitente;
+import com.mycompany.gestiondocumentalfesc.modelos.ListadoDestinatarios;
+import com.mycompany.gestiondocumentalfesc.modelos.ListadoEmpresas;
+import com.mycompany.gestiondocumentalfesc.modelos.ListadoEstudiantes;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
-/**
- *
- * @author Familia
- */
+
+
 public class JFrameRegistrar extends javax.swing.JFrame {
+    
+    Conexion conexion = new Conexion();
+    Connection connection = conexion.conectar();
 
-    /**
-     * Creates new form JFrameRegistro
-     */
+    
     public JFrameRegistrar() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        cargarComboEstudiante(jComboBoxSeleccionarEstudiante);
+        cargarComboEmpresa(jComboBoxSeleccionarEmpresa);
+        cargarComboDestinatario(jComboBoxSeleccionarDestinatario);
+        jComboBoxSeleccionarEstudiante.addItem("Ninguno");
+        jComboBoxSeleccionarEmpresa.addItem("Ninguno");
     }
 
     /**
@@ -37,29 +57,29 @@ public class JFrameRegistrar extends javax.swing.JFrame {
         txtNumAnexos = new javax.swing.JTextField();
         jComboBoxTipoDocumento = new javax.swing.JComboBox<>();
         jComboBoxTipoRadicado = new javax.swing.JComboBox<>();
-        jButtonSubirArchivo = new javax.swing.JButton();
+        jButtonSeleccionarArchivo = new javax.swing.JButton();
         txtNombreArchivo = new javax.swing.JTextField();
         jCheckBoxRequiereRespuesta = new javax.swing.JCheckBox();
         jtbGuardarDatos = new javax.swing.JToggleButton();
-        jComboBoxTipoRadicado1 = new javax.swing.JComboBox<>();
-        jComboBoxTipoDocumento1 = new javax.swing.JComboBox<>();
-        jComboBoxTipoDocumento2 = new javax.swing.JComboBox<>();
+        jComboBoxSeleccionarEstudiante = new javax.swing.JComboBox<>();
+        jComboBoxSeleccionarDestinatario = new javax.swing.JComboBox<>();
+        jComboBoxSeleccionarEmpresa = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        txtDocRemitente = new javax.swing.JTextField();
+        txtDocEstudiante = new javax.swing.JTextField();
         txtSemestre = new javax.swing.JTextField();
-        txtCorreoEstudianteRemitente = new javax.swing.JTextField();
-        txtNombreRemitente = new javax.swing.JTextField();
-        txtCarrera = new javax.swing.JTextField();
-        txtTelefonoRemitente = new javax.swing.JTextField();
-        jtbGuardarDatos2 = new javax.swing.JToggleButton();
+        txtCorreoEstudiante = new javax.swing.JTextField();
+        txtNombreEstudiante = new javax.swing.JTextField();
+        txtTelefonoEstudiante = new javax.swing.JTextField();
+        jtbGuardarDatosEstudiante = new javax.swing.JToggleButton();
+        jComboBoxCarrera = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
-        txtDocRemitente1 = new javax.swing.JTextField();
-        jTextFieldNIT = new javax.swing.JTextField();
-        txtCorreoCompaniaRemitente = new javax.swing.JTextField();
-        txtTelefonoCompaniaRemitente = new javax.swing.JTextField();
-        jTextFieldNombreCompania = new javax.swing.JTextField();
-        txtNombreEmpleadoRemitente = new javax.swing.JTextField();
-        jtbGuardarDatos3 = new javax.swing.JToggleButton();
+        txtDocEmpresa = new javax.swing.JTextField();
+        txtNit = new javax.swing.JTextField();
+        txtCorreoEmpresa = new javax.swing.JTextField();
+        txtTelefonoEmpresa = new javax.swing.JTextField();
+        txtNombreEmpresa = new javax.swing.JTextField();
+        txtNombreEmpleadoEmpresa = new javax.swing.JTextField();
+        jtbGuardarDatosEmpresa = new javax.swing.JToggleButton();
         jPanel4 = new javax.swing.JPanel();
         txtDocDestinatario = new javax.swing.JTextField();
         txtCargo = new javax.swing.JTextField();
@@ -67,11 +87,14 @@ public class JFrameRegistrar extends javax.swing.JFrame {
         txtArea = new javax.swing.JTextField();
         txtNombresDestinatario = new javax.swing.JTextField();
         txtTelefonoDestinatario = new javax.swing.JTextField();
-        jtbGuardarDatos1 = new javax.swing.JToggleButton();
+        jtbGuardarDatosDestinatario = new javax.swing.JToggleButton();
         jButtonRegistrar = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("REGISTRAR");
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAsunto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtAsunto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Asunto", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
@@ -90,12 +113,13 @@ public class JFrameRegistrar extends javax.swing.JFrame {
         });
 
         jDateFecha.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jDateFecha.setDateFormatString("yyyy-MM-dd");
 
         txtNumAnexos.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtNumAnexos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Numero de Anexos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
 
         jComboBoxTipoDocumento.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBoxTipoDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Carta", "Acta", "Copia", "Peticion" }));
+        jComboBoxTipoDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Carta", "Acta", "Copia", "Peticion", "Solicitud", "Derecho de peticion", "Citacion", "Memorando", "Caja", "Factura", "Remision", "Paquete" }));
         jComboBoxTipoDocumento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de Documento", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
         jComboBoxTipoDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,11 +131,11 @@ public class JFrameRegistrar extends javax.swing.JFrame {
         jComboBoxTipoRadicado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrega", "Respuesta" }));
         jComboBoxTipoRadicado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de Radicado", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
 
-        jButtonSubirArchivo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButtonSubirArchivo.setText("Subir Archivo");
-        jButtonSubirArchivo.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSeleccionarArchivo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonSeleccionarArchivo.setText("Seleccionar");
+        jButtonSeleccionarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSubirArchivoActionPerformed(evt);
+                jButtonSeleccionarArchivoActionPerformed(evt);
             }
         });
 
@@ -120,26 +144,33 @@ public class JFrameRegistrar extends javax.swing.JFrame {
 
         jtbGuardarDatos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jtbGuardarDatos.setText("GUARDAR DATOS");
-
-        jComboBoxTipoRadicado1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBoxTipoRadicado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Estudiante" }));
-        jComboBoxTipoRadicado1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estudiante", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
-
-        jComboBoxTipoDocumento1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBoxTipoDocumento1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destinatario", "Destinatario" }));
-        jComboBoxTipoDocumento1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Destinatario", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
-        jComboBoxTipoDocumento1.addActionListener(new java.awt.event.ActionListener() {
+        jtbGuardarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxTipoDocumento1ActionPerformed(evt);
+                jtbGuardarDatosActionPerformed(evt);
             }
         });
 
-        jComboBoxTipoDocumento2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBoxTipoDocumento2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empresa", "Empresa" }));
-        jComboBoxTipoDocumento2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empresa", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
-        jComboBoxTipoDocumento2.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxSeleccionarEstudiante.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jComboBoxSeleccionarEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estudiante", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
+        jComboBoxSeleccionarEstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxTipoDocumento2ActionPerformed(evt);
+                jComboBoxSeleccionarEstudianteActionPerformed(evt);
+            }
+        });
+
+        jComboBoxSeleccionarDestinatario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jComboBoxSeleccionarDestinatario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Destinatario", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
+        jComboBoxSeleccionarDestinatario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSeleccionarDestinatarioActionPerformed(evt);
+            }
+        });
+
+        jComboBoxSeleccionarEmpresa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jComboBoxSeleccionarEmpresa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empresa", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
+        jComboBoxSeleccionarEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSeleccionarEmpresaActionPerformed(evt);
             }
         });
 
@@ -148,50 +179,51 @@ public class JFrameRegistrar extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(18, 317, Short.MAX_VALUE)
+                .addComponent(jtbGuardarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(274, 274, 274))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonSubirArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSeleccionarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNombreArchivo)
                         .addGap(18, 18, 18)
-                        .addComponent(jCheckBoxRequiereRespuesta))
+                        .addComponent(jCheckBoxRequiereRespuesta)
+                        .addGap(1, 1, 1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBoxTipoRadicado1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBoxTipoDocumento2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBoxTipoDocumento1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtAsunto, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNumRadicado)
-                                    .addComponent(jComboBoxTipoRadicado, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jDateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtAsunto))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNumAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBoxTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 3, Short.MAX_VALUE)))
-                .addContainerGap(7, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jtbGuardarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(274, 274, 274))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jComboBoxTipoRadicado, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jComboBoxTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtNumRadicado, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtNumAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jComboBoxSeleccionarEstudiante, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBoxSeleccionarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBoxSeleccionarDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNumRadicado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtAsunto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtNumAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNumRadicado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAsunto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNumAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jDateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,35 +232,50 @@ public class JFrameRegistrar extends javax.swing.JFrame {
                         .addComponent(jComboBoxTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxTipoRadicado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxTipoDocumento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxTipoDocumento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxSeleccionarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxSeleccionarDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxSeleccionarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSubirArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSeleccionarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombreArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBoxRequiereRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jtbGuardarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        jComboBoxSeleccionarEstudiante.getAccessibleContext().setAccessibleParent(this);
+        jComboBoxSeleccionarDestinatario.getAccessibleContext().setAccessibleParent(this);
+        jComboBoxSeleccionarEmpresa.getAccessibleContext().setAccessibleParent(this);
 
         jTabbedPane1.addTab("Documento", jPanel1);
 
-        txtDocRemitente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Documento", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtDocEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Documento", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         txtSemestre.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Semestre", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        txtCorreoEstudianteRemitente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Correo", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtCorreoEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Correo", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        txtNombreRemitente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombres y Apellidos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtNombreEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombres y Apellidos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        txtCarrera.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carrera", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtTelefonoEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Telefono", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        txtTelefonoRemitente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Telefono", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jtbGuardarDatosEstudiante.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jtbGuardarDatosEstudiante.setText("GUARDAR DATOS");
+        jtbGuardarDatosEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbGuardarDatosEstudianteActionPerformed(evt);
+            }
+        });
 
-        jtbGuardarDatos2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jtbGuardarDatos2.setText("GUARDAR DATOS");
+        jComboBoxCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diseño grafico", "Diseño de modas", "Hoteleria y turismo", "Ingenieria de software", "Negocios internacionales", "Administracion financiera", "Logistica empresarial" }));
+        jComboBoxCarrera.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carrera", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jComboBoxCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCarreraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -236,23 +283,23 @@ public class JFrameRegistrar extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtDocEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtNombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBoxCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtNombreRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(txtTelefonoRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtDocRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCorreoEstudianteRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(txtCorreoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefonoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jtbGuardarDatos2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtbGuardarDatosEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(274, 274, 274))
         );
         jPanel2Layout.setVerticalGroup(
@@ -261,34 +308,39 @@ public class JFrameRegistrar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDocRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCorreoEstudianteRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDocEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCorreoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombreRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefonoRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                .addComponent(jtbGuardarDatos2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefonoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                .addComponent(jtbGuardarDatosEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
 
         jTabbedPane1.addTab("Estudiante", jPanel2);
 
-        txtDocRemitente1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Documento", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtDocEmpresa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Documento", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        jTextFieldNIT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nit", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtNit.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nit", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        txtCorreoCompaniaRemitente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Correo", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtCorreoEmpresa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Correo", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        txtTelefonoCompaniaRemitente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Telefono", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtTelefonoEmpresa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Telefono", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        jTextFieldNombreCompania.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre de compañia", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtNombreEmpresa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre de compañia", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        txtNombreEmpleadoRemitente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombres y Apellidos Empleado", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtNombreEmpleadoEmpresa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombres y Apellidos Empleado", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        jtbGuardarDatos3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jtbGuardarDatos3.setText("GUARDAR DATOS");
+        jtbGuardarDatosEmpresa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jtbGuardarDatosEmpresa.setText("GUARDAR DATOS");
+        jtbGuardarDatosEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbGuardarDatosEmpresaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -298,21 +350,21 @@ public class JFrameRegistrar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jTextFieldNombreCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDocEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtNombreEmpleadoRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(txtTelefonoCompaniaRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtDocRemitente1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombreEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextFieldNIT, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCorreoCompaniaRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(txtNombreEmpleadoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCorreoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefonoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jtbGuardarDatos3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtbGuardarDatosEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(274, 274, 274))
         );
         jPanel3Layout.setVerticalGroup(
@@ -320,16 +372,16 @@ public class JFrameRegistrar extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldNIT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDocRemitente1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCorreoCompaniaRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDocEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCorreoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldNombreCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombreEmpleadoRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefonoCompaniaRemitente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                .addComponent(jtbGuardarDatos3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreEmpleadoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefonoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                .addComponent(jtbGuardarDatosEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
 
@@ -357,8 +409,13 @@ public class JFrameRegistrar extends javax.swing.JFrame {
             }
         });
 
-        jtbGuardarDatos1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jtbGuardarDatos1.setText("GUARDAR DATOS");
+        jtbGuardarDatosDestinatario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jtbGuardarDatosDestinatario.setText("GUARDAR DATOS");
+        jtbGuardarDatosDestinatario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbGuardarDatosDestinatarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -368,7 +425,7 @@ public class JFrameRegistrar extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(296, 296, 296)
-                        .addComponent(jtbGuardarDatos1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtbGuardarDatosDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,16 +433,15 @@ public class JFrameRegistrar extends javax.swing.JFrame {
                                 .addComponent(txtDocDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addComponent(txtNombresDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(txtTelefonoDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtCorreoDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                                .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,40 +456,26 @@ public class JFrameRegistrar extends javax.swing.JFrame {
                     .addComponent(txtTelefonoDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCorreoDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                .addComponent(jtbGuardarDatos1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                .addComponent(jtbGuardarDatosDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
 
         jTabbedPane1.addTab("Destinatario", jPanel4);
 
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 47, 760, -1));
+
         jButtonRegistrar.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jButtonRegistrar.setText("CONSULTAR -->");
+        jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
 
         jLabel14.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INGRESAR DATOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonRegistrar)
-                .addGap(35, 35, 35))
-            .addComponent(jTabbedPane1)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel14)
-                    .addComponent(jButtonRegistrar))
-                .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1))
-        );
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 7, 262, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -458,7 +500,7 @@ public class JFrameRegistrar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefonoDestinatarioActionPerformed
 
-    private void jButtonSubirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubirArchivoActionPerformed
+    private void jButtonSeleccionarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarArchivoActionPerformed
 
         JFileChooser escoger = new JFileChooser();
 
@@ -474,23 +516,172 @@ public class JFrameRegistrar extends javax.swing.JFrame {
             else {
                 txtNombreArchivo.setText(archivo.getAbsolutePath());
             }
-
-            /*long longitud = archivo.length();
-            String nombreArchivo = File.separator;
-            System.out.println(nombreArchivo);
-            String ruta = File.pathSeparator;
-            System.out.println(ruta);
-            archivo.getAbsolutePath();*/
         }
-    }//GEN-LAST:event_jButtonSubirArchivoActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_jButtonSeleccionarArchivoActionPerformed
 
-    private void jComboBoxTipoDocumento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoDocumento1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxTipoDocumento1ActionPerformed
+    private void jComboBoxSeleccionarDestinatarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSeleccionarDestinatarioActionPerformed
+        
+    }//GEN-LAST:event_jComboBoxSeleccionarDestinatarioActionPerformed
 
-    private void jComboBoxTipoDocumento2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoDocumento2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxTipoDocumento2ActionPerformed
+    private void jComboBoxSeleccionarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSeleccionarEmpresaActionPerformed
+
+    }//GEN-LAST:event_jComboBoxSeleccionarEmpresaActionPerformed
+
+    private void jtbGuardarDatosEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbGuardarDatosEstudianteActionPerformed
+        
+        String sql;
+        String docEstudianteRemitente = txtDocEstudiante.getText();
+        String nombreEstudianteRemitente = txtNombreEstudiante.getText();
+        String carrera = jComboBoxCarrera.getSelectedItem().toString();
+        String semestre = txtSemestre.getText();
+        String correoRemitente = txtCorreoEstudiante.getText();
+        String telefonoRemitente = txtTelefonoEstudiante.getText();
+        
+        sql = "INSERT INTO `estudiante`(`idEstudiante`, `docEstudiante`, `nombresEstudiante`, `carrera`, `semestre`, `correoEstudiante`, `telefonoEstudiante`) VALUES(null,?,?,?,?,?,?)";
+        
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, docEstudianteRemitente);
+            ps.setString(2, nombreEstudianteRemitente);
+            ps.setString(3, carrera);
+            ps.setString(4, semestre);
+            ps.setString(5, correoRemitente);
+            ps.setString(6, telefonoRemitente);
+            int consulta1 = ps.executeUpdate();
+            
+            if(consulta1 > 0) {
+                JOptionPane.showMessageDialog(null, "Datos del estudiante subidos con exito");
+            }
+            
+            actualizar();
+            
+        } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al subir datos" + "" +e.getMessage());
+        }
+    }//GEN-LAST:event_jtbGuardarDatosEstudianteActionPerformed
+
+    private void jtbGuardarDatosEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbGuardarDatosEmpresaActionPerformed
+        
+        String sql;
+        String docEmpresaRemitente = txtDocEmpresa.getText();
+        String nombreEmpresaRemitente = txtNombreEmpresa.getText();
+        String nit = txtNit.getText();
+        String nombreEmpleadoRemitente = txtNombreEmpleadoEmpresa.getText();
+        String correoEmpresaRemitente = txtCorreoEmpresa.getText();
+        String telefonoCompaniaRemitente = txtTelefonoEmpresa.getText();
+        
+        sql = "INSERT INTO `empresa`(`idEmpresa`, `docEmpresa`, `nombreEmpresa`, `nit`, `nombreEmpleado`, `correoEmpresa`, `telefonoEmpresa`) VALUES(null,?,?,?,?,?,?)";
+        
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, docEmpresaRemitente);
+            ps.setString(2, nombreEmpresaRemitente);
+            ps.setString(3, nit);
+            ps.setString(4, nombreEmpleadoRemitente);
+            ps.setString(5, correoEmpresaRemitente);
+            ps.setString(6, telefonoCompaniaRemitente);
+            int consulta2 = ps.executeUpdate();
+            
+            if(consulta2 > 0) {
+               JOptionPane.showMessageDialog(null, "Datos de la empresa subidos con exito"); 
+            }
+            actualizar();
+            
+        } catch (SQLException e) {
+               JOptionPane.showMessageDialog(null, "Error al subir datos\n" + e);
+        }
+    }//GEN-LAST:event_jtbGuardarDatosEmpresaActionPerformed
+
+    private void jtbGuardarDatosDestinatarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbGuardarDatosDestinatarioActionPerformed
+        
+        String sql;
+        String docDestinatario = txtDocDestinatario.getText();
+        String cargo = txtCargo.getText();
+        String correoDestinatario = txtCorreoDestinatario.getText();
+        String area = txtArea.getText();
+        String nombresDestinatario = txtNombresDestinatario.getText();
+        String telefonoDestinatario = txtTelefonoDestinatario.getText();
+        
+        sql = "INSERT INTO `destinatario`(`idDestinatario`, `docDestinatario`, `cargo`, `nombreDestinatario`, `area`, `correoDestinatario`, `telefonoDestinatario`) VALUES(null,?,?,?,?,?,?)";
+        
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, docDestinatario);
+            ps.setString(2, cargo);
+            ps.setString(3, nombresDestinatario);
+            ps.setString(4, area);
+            ps.setString(5, correoDestinatario);
+            ps.setString(6, telefonoDestinatario);
+            int consulta3 = ps.executeUpdate();
+            
+            if(consulta3 > 0) {
+                JOptionPane.showMessageDialog(null, "Datos del destinatario subidos con exito"); 
+            }
+            actualizar();
+            
+        } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al subir datos\n" + e);
+        }
+    }//GEN-LAST:event_jtbGuardarDatosDestinatarioActionPerformed
+
+    private void jtbGuardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbGuardarDatosActionPerformed
+            
+            String sql;
+            String asunto = txtAsunto.getText();
+            String numRadicado = txtNumRadicado.getText();
+            String tipoRadicado = jComboBoxTipoRadicado.getSelectedItem().toString();
+            String fecha = ((JTextField)jDateFecha.getDateEditor().getUiComponent()).getText();
+            String numAnexo = txtNumAnexos.getText();
+            String tipoDocumento = jComboBoxTipoDocumento.getSelectedItem().toString();
+            String selecEstudiante = jComboBoxSeleccionarEstudiante.getSelectedItem().toString();
+            String selecEmpresa = jComboBoxSeleccionarEmpresa.getSelectedItem().toString();
+            String selecDestinatario = jComboBoxSeleccionarDestinatario.getSelectedItem().toString();
+            String reqRespuesta = getJchReqRespuesta();
+            
+            sql = "INSERT INTO `documento`(`idDocumento`, `asunto`, `numeroRadicado`, `numeroAnexo`, `fecha`, `tipoRadicado`, `tipoDocumento`, `estudianteNombre`, `empresaNombre`, `destinatarioNombre`, `reqRespuesta`) VALUES (null,?,?,?,?,?,?,?,?,?,?)";
+            
+            try {
+                PreparedStatement ps = connection.prepareStatement(sql);
+                ps.setString(1, asunto);
+                ps.setString(2, numRadicado);
+                ps.setString(3, numAnexo);
+                ps.setDate(4, (Date) Date.valueOf(fecha));
+                ps.setString(5, tipoRadicado);
+                ps.setString(6, tipoDocumento);
+                ps.setString(7, selecEstudiante);
+                ps.setString(8, selecEmpresa);
+                ps.setString(9, selecDestinatario);
+                ps.setString(10, reqRespuesta);
+                int consulta4 = ps.executeUpdate();
+                
+                if(consulta4 > 0) {
+                    JOptionPane.showMessageDialog(null, "Datos del documento subidos con exito"); 
+                }
+                actualizar();
+                
+            } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error al subir datos\n" + e);
+        }
+    }//GEN-LAST:event_jtbGuardarDatosActionPerformed
+
+    private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
+        JFrameConsultar rgf = new JFrameConsultar();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jButtonRegistrarActionPerformed
+
+    private void jComboBoxSeleccionarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSeleccionarEstudianteActionPerformed
+          
+    }//GEN-LAST:event_jComboBoxSeleccionarEstudianteActionPerformed
+
+    private void jComboBoxCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCarreraActionPerformed
+    }//GEN-LAST:event_jComboBoxCarreraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -532,13 +723,14 @@ public class JFrameRegistrar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonRegistrar;
-    public static javax.swing.JButton jButtonSubirArchivo;
+    public static javax.swing.JButton jButtonSeleccionarArchivo;
     public static javax.swing.JCheckBox jCheckBoxRequiereRespuesta;
+    public static javax.swing.JComboBox<String> jComboBoxCarrera;
+    public static javax.swing.JComboBox<String> jComboBoxSeleccionarDestinatario;
+    public static javax.swing.JComboBox<String> jComboBoxSeleccionarEmpresa;
+    public static javax.swing.JComboBox<String> jComboBoxSeleccionarEstudiante;
     public static javax.swing.JComboBox<String> jComboBoxTipoDocumento;
-    public static javax.swing.JComboBox<String> jComboBoxTipoDocumento1;
-    public static javax.swing.JComboBox<String> jComboBoxTipoDocumento2;
     public static javax.swing.JComboBox<String> jComboBoxTipoRadicado;
-    public static javax.swing.JComboBox<String> jComboBoxTipoRadicado1;
     public static com.toedter.calendar.JDateChooser jDateFecha;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JPanel jPanel1;
@@ -546,31 +738,122 @@ public class JFrameRegistrar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    public static javax.swing.JTextField jTextFieldNIT;
-    public static javax.swing.JTextField jTextFieldNombreCompania;
     public static javax.swing.JToggleButton jtbGuardarDatos;
-    public static javax.swing.JToggleButton jtbGuardarDatos1;
-    public static javax.swing.JToggleButton jtbGuardarDatos2;
-    public static javax.swing.JToggleButton jtbGuardarDatos3;
+    public static javax.swing.JToggleButton jtbGuardarDatosDestinatario;
+    public static javax.swing.JToggleButton jtbGuardarDatosEmpresa;
+    public static javax.swing.JToggleButton jtbGuardarDatosEstudiante;
     public static javax.swing.JTextField txtArea;
     public static javax.swing.JTextField txtAsunto;
     public static javax.swing.JTextField txtCargo;
-    public static javax.swing.JTextField txtCarrera;
-    public static javax.swing.JTextField txtCorreoCompaniaRemitente;
     public static javax.swing.JTextField txtCorreoDestinatario;
-    public static javax.swing.JTextField txtCorreoEstudianteRemitente;
+    public static javax.swing.JTextField txtCorreoEmpresa;
+    public static javax.swing.JTextField txtCorreoEstudiante;
     public static javax.swing.JTextField txtDocDestinatario;
-    public static javax.swing.JTextField txtDocRemitente;
-    public static javax.swing.JTextField txtDocRemitente1;
+    public static javax.swing.JTextField txtDocEmpresa;
+    public static javax.swing.JTextField txtDocEstudiante;
+    public static javax.swing.JTextField txtNit;
     public static javax.swing.JTextField txtNombreArchivo;
-    public static javax.swing.JTextField txtNombreEmpleadoRemitente;
-    public static javax.swing.JTextField txtNombreRemitente;
+    public static javax.swing.JTextField txtNombreEmpleadoEmpresa;
+    public static javax.swing.JTextField txtNombreEmpresa;
+    public static javax.swing.JTextField txtNombreEstudiante;
     public static javax.swing.JTextField txtNombresDestinatario;
     public static javax.swing.JTextField txtNumAnexos;
     public static javax.swing.JTextField txtNumRadicado;
     public static javax.swing.JTextField txtSemestre;
-    public static javax.swing.JTextField txtTelefonoCompaniaRemitente;
     public static javax.swing.JTextField txtTelefonoDestinatario;
-    public static javax.swing.JTextField txtTelefonoRemitente;
+    public static javax.swing.JTextField txtTelefonoEmpresa;
+    public static javax.swing.JTextField txtTelefonoEstudiante;
     // End of variables declaration//GEN-END:variables
+
+     public static String getJchReqRespuesta() {
+        
+        if(jCheckBoxRequiereRespuesta.isSelected()) {
+            return "1";
+        }
+        
+        else {
+            return "0";
+        }
+    }
+
+    private void cargarComboEstudiante(JComboBox c) {
+        
+        DefaultComboBoxModel comboEstudiante = new DefaultComboBoxModel();
+        c.setModel(comboEstudiante);
+        ListadoEstudiantes listadoEstudiantes = new ListadoEstudiantes();
+        
+        String sql = "SELECT CONCAT(docEstudiante,' - ', nombresEstudiante) FROM estudiante ORDER BY idEstudiante DESC";
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            while (rs.next()) {
+                EstudianteRemitente estudiante = new EstudianteRemitente();
+                estudiante.setNombres(rs.getString(1));
+                listadoEstudiantes.agregarEstudiantes(estudiante);
+                comboEstudiante.addElement(estudiante.getNombres());
+                
+                System.out.println("Datos de estudiantes cargados con exito");
+            }
+        } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error, no se puede cargar datos" + e.getMessage());
+        }
+    }
+
+    private void cargarComboEmpresa(JComboBox c) {
+        
+        DefaultComboBoxModel comboEmpresa = new DefaultComboBoxModel();
+        c.setModel(comboEmpresa);
+        ListadoEmpresas listadoEmpresas = new ListadoEmpresas();
+        
+        String sql = "SELECT CONCAT(docEmpresa,' - ', nombreEmpresa) FROM empresa ORDER BY idEmpresa DESC";
+        
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()) {
+                EmpresaRemitente empresa = new EmpresaRemitente();
+                empresa.setNombreEmpresa(rs.getString(1));
+                listadoEmpresas.agregarEmpresas(empresa);
+                comboEmpresa.addElement(empresa.getNombreEmpresa());
+                
+                System.out.println("Datos de empresas cargados con exito");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error, no se puede cargar datos" + e.getMessage());
+        }
+    }
+
+    private void cargarComboDestinatario(JComboBox c) {
+        
+        DefaultComboBoxModel comboDestinatario = new DefaultComboBoxModel();
+        c.setModel(comboDestinatario);
+        ListadoDestinatarios listadoDestinatarios = new ListadoDestinatarios();
+        
+        String sql = "SELECT CONCAT(docDestinatario, ' - ', nombreDestinatario) FROM destinatario ORDER BY idDestinatario DESC";
+        
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            while (rs.next()) {
+                Destinatario destinatario = new Destinatario();
+                destinatario.setNombres(rs.getString(1));
+                listadoDestinatarios.agregarDestinatarios(destinatario);
+                comboDestinatario.addElement(destinatario.getNombres());
+                
+                System.out.println("Datos de destinatarios cargados con exito");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error, no se puede cargar datos" + e.getMessage());
+        }
+    }
+
+    public void actualizar() {
+        JFrameRegistrar main = new JFrameRegistrar();
+        main.setVisible(true);
+        this.dispose(); 
+    }
+
 }

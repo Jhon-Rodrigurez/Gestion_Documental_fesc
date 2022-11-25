@@ -1,4 +1,5 @@
 com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar$3.class
+com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar$13.class
 com\mycompany\gestiondocumentalfesc\controladores\ControladorConsultar.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameLogin$2.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrarUsuario$2.class
@@ -10,10 +11,14 @@ com\mycompany\gestiondocumentalfesc\controladores\ControladorLogin.class
 com\mycompany\gestiondocumentalfesc\modelos\Datos.class
 com\mycompany\gestiondocumentalfesc\modelos\EmpresaRemitente.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameConsultar$2.class
+com\mycompany\gestiondocumentalfesc\controladores\ControladorConsultar$1.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar$6.class
+com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar$14.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar$8.class
 com\mycompany\gestiondocumentalfesc\modelos\Persona.class
+com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar$11.class
 com\mycompany\gestiondocumentalfesc\controladores\ControladorDocumento.class
+com\mycompany\gestiondocumentalfesc\conexion\Conexion.class
 com\mycompany\gestiondocumentalfesc\controladores\ControladorRegistrar.class
 com\mycompany\gestiondocumentalfesc\modelos\EstudianteRemitente.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar$9.class
@@ -21,6 +26,7 @@ com\mycompany\gestiondocumentalfesc\RenderImgJTable\RenderImg.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrarUsuario$3.class
 com\mycompany\gestiondocumentalfesc\GestionDocumentalFesc.class
 com\mycompany\gestiondocumentalfesc\modelos\Usuario.class
+com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar$12.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar$4.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameLogin$1.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameLogin.class
@@ -28,13 +34,13 @@ com\mycompany\gestiondocumentalfesc\modelos\Documento.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrarUsuario$1.class
 com\mycompany\gestiondocumentalfesc\controladores\ControladorEmpresaRemitente.class
 com\mycompany\gestiondocumentalfesc\modelos\Login.class
-com\mycompany\gestiondocumentalfesc\RenderImgJTable\ControladorTabla$1.class
+com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar$10.class
 com\mycompany\gestiondocumentalfesc\controladores\ControladorUsuario.class
 com\mycompany\gestiondocumentalfesc\modelos\Destinatario.class
-com\mycompany\gestiondocumentalfesc\RenderImgJTable\ControladorTabla.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameConsultar$3.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar$2.class
+com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar$15.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrar$7.class
 com\mycompany\gestiondocumentalfesc\controladores\ControladorEstudianteRemitente.class
 com\mycompany\gestiondocumentalfesc\vistas\JFrameConsultar.class

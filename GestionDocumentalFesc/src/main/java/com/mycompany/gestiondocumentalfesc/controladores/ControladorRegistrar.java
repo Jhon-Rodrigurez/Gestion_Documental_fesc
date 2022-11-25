@@ -1,82 +1,206 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.gestiondocumentalfesc.controladores;
 
-import com.mycompany.gestiondocumentalfesc.modelos.Documento;
+import com.mycompany.gestiondocumentalfesc.conexion.Conexion;
 import com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.jCheckBoxRequiereRespuesta;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.jComboBoxCarrera;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.jComboBoxSeleccionarDestinatario;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.jComboBoxSeleccionarEmpresa;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.jComboBoxSeleccionarEstudiante;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.jComboBoxTipoDocumento;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.jComboBoxTipoRadicado;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.jDateFecha;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtArea;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtAsunto;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtCargo;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtCorreoDestinatario;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtCorreoEmpresa;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtCorreoEstudiante;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtDocDestinatario;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtDocEmpresa;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtDocEstudiante;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtNit;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtNombreEmpleadoEmpresa;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtNombreEmpresa;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtNombreEstudiante;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtNombresDestinatario;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtNumAnexos;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtNumRadicado;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtSemestre;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtTelefonoDestinatario;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtTelefonoEmpresa;
+import static com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrar.txtTelefonoEstudiante;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
-/**
- *
- * @author Familia
- */
+
 public class ControladorRegistrar implements ActionListener {
     
-    ControladorDocumento ctDoc;
-    JFrameRegistrar jFrameRegistrar;
+    private JFrameRegistrar jFrameRegistrar;
     
     public ControladorRegistrar(JFrameRegistrar jFrameRegistrar) {
-        this.ctDoc = new ControladorDocumento();
-        this.jFrameRegistrar = new JFrameRegistrar();
+        this.jFrameRegistrar = jFrameRegistrar;
     }
+    
+    public void iniciar() {
+        jFrameRegistrar.setLocationRelativeTo(jFrameRegistrar);
+        jFrameRegistrar.setVisible(true);
+    }
+    
+    Conexion conexion = new Conexion();
+    Connection connection = conexion.conectar();
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+        if(e.getSource() == JFrameRegistrar.jtbGuardarDatosEstudiante) {
+            
+        String sql;
+        String docEstudianteRemitente = txtDocEstudiante.getText();
+        String nombreEstudianteRemitente = txtNombreEstudiante.getText();
+        String carrera = jComboBoxCarrera.getSelectedItem().toString();
+        String semestre = txtSemestre.getText();
+        String correoRemitente = txtCorreoEstudiante.getText();
+        String telefonoRemitente = txtTelefonoEstudiante.getText();
+        
+        sql = "INSERT INTO `estudiante`(`idEstudiante`, `docEstudiante`, `nombresEstudiante`, `carrera`, `semestre`, `correoEstudiante`, `telefonoEstudiante`) VALUES(null,?,?,?,?,?,?)";
+        
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, docEstudianteRemitente);
+            ps.setString(2, nombreEstudianteRemitente);
+            ps.setString(3, carrera);
+            ps.setString(4, semestre);
+            ps.setString(5, correoRemitente);
+            ps.setString(6, telefonoRemitente);
+            int consulta1 = ps.executeUpdate();
+            
+            if(consulta1 > 0) {
+                JOptionPane.showMessageDialog(null, "Datos del estudiante subidos con exito");
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al subir datos" + "" +ex.getMessage());
+            }
+        }
+        
+        if(e.getSource() == JFrameRegistrar.jtbGuardarDatosEmpresa) {
+            
+        String sql;
+        String docEmpresaRemitente = txtDocEmpresa.getText();
+        String nombreEmpresaRemitente = txtNombreEmpresa.getText();
+        String nit = txtNit.getText();
+        String nombreEmpleadoRemitente = txtNombreEmpleadoEmpresa.getText();
+        String correoEmpresaRemitente = txtCorreoEmpresa.getText();
+        String telefonoCompaniaRemitente = txtTelefonoEmpresa.getText();
+        
+        sql = "INSERT INTO `empresa`(`idEmpresa`, `docEmpresa`, `nombreEmpresa`, `nit`, `nombreEmpleado`, `correoEmpresa`, `telefonoEmpresa`) VALUES(null,?,?,?,?,?,?)";
+        
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, docEmpresaRemitente);
+            ps.setString(2, nombreEmpresaRemitente);
+            ps.setString(3, nit);
+            ps.setString(4, nombreEmpleadoRemitente);
+            ps.setString(5, correoEmpresaRemitente);
+            ps.setString(6, telefonoCompaniaRemitente);
+            int consulta2 = ps.executeUpdate();
+            
+            if(consulta2 > 0) {
+               JOptionPane.showMessageDialog(null, "Datos de la empresa subidos con exito"); 
+            }
+        } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(null, "Error al subir datos\n" + ex);
+            }
+        }
+        
+        if(e.getSource() == JFrameRegistrar.jtbGuardarDatosDestinatario) {
+            
+        String sql;
+        String docDestinatario = txtDocDestinatario.getText();
+        String cargo = txtCargo.getText();
+        String correoDestinatario = txtCorreoDestinatario.getText();
+        String area = txtArea.getText();
+        String nombresDestinatario = txtNombresDestinatario.getText();
+        String telefonoDestinatario = txtTelefonoDestinatario.getText();
+        
+        sql = "INSERT INTO `destinatario`(`idDestinatario`, `docDestinatario`, `cargo`, `nombreDestinatario`, `area`, `correoDestinatario`, `telefonoDestinatario`) VALUES(null,?,?,?,?,?,?)";
+        
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, docDestinatario);
+            ps.setString(2, cargo);
+            ps.setString(3, nombresDestinatario);
+            ps.setString(4, area);
+            ps.setString(5, correoDestinatario);
+            ps.setString(6, telefonoDestinatario);
+            int consulta3 = ps.executeUpdate();
+            
+            if(consulta3 > 0) {
+                JOptionPane.showMessageDialog(null, "Datos del destinatario subidos con exito"); 
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al subir datos\n" + ex);
+                }
+            }
+        
         if(e.getSource() == JFrameRegistrar.jtbGuardarDatos) {
             
-            //FORMULARIOS DE DATOS DEL DOCUMENTO
-            String asunto = JFrameRegistrar.txtAsunto.getText();
-            String numRadicado = JFrameRegistrar.txtNumRadicado.getText();
-            String tipoRadicado = JFrameRegistrar.jComboBoxTipoRadicado.toString();
-            Date fecha = JFrameRegistrar.jDateFecha.getDate();
-            String numAnexo = JFrameRegistrar.txtNumAnexos.getText();
-            String tipoDocumento = JFrameRegistrar.jComboBoxTipoDocumento.toString();
+            String sql;
+            String asunto = txtAsunto.getText();
+            String numRadicado = txtNumRadicado.getText();
+            String tipoRadicado = jComboBoxTipoRadicado.getSelectedItem().toString();
+            String fecha = ((JTextField)jDateFecha.getDateEditor().getUiComponent()).getText();
+            String numAnexo = txtNumAnexos.getText();
+            String tipoDocumento = jComboBoxTipoDocumento.getSelectedItem().toString();
+            String selecEstudiante = jComboBoxSeleccionarEstudiante.getSelectedItem().toString();
+            String selecEmpresa = jComboBoxSeleccionarEmpresa.getSelectedItem().toString();
+            String selecDestinatario = jComboBoxSeleccionarDestinatario.getSelectedItem().toString();
+            String reqRespuesta = getJchReqRespuesta();
             
-            //FORMULARIOS DE INGRESAR DATOS DE REMITENTE
-            String docEstudianteRemitente = JFrameRegistrar.txtDocRemitente.getText();
-            String nombreEstudianteRemitente = JFrameRegistrar.txtNombreRemitente.getText();
-            String carrera = JFrameRegistrar.txtCarrera.getText();
-            String semestre = JFrameRegistrar.txtSemestre.getText();
-            String correoRemitente = JFrameRegistrar.txtCorreoEstudianteRemitente.getText();
-            String telefonoRemitente = JFrameRegistrar.txtTelefonoRemitente.getText();
+            sql = "INSERT INTO `documento`(`idDocumento`, `asunto`, `numeroRadicado`, `numeroAnexo`, `fecha`, `tipoRadicado`, `tipoDocumento`, `estudianteNombre`, `empresaNombre`, `destinatarioNombre`, `reqRespuesta`) VALUES (null,?,?,?,?,?,?,?,?,?,?)";
             
-            String docCompaniaRemitente = JFrameRegistrar.txtDocRemitente1.getText();
-            String nombreCompaniaRemitente = JFrameRegistrar.jTextFieldNombreCompania.getText();
-            String nit = JFrameRegistrar.jTextFieldNIT.getText();
-            String nombreEmpleadoRemitente = JFrameRegistrar.txtNombreEmpleadoRemitente.getText();
-            String correoCompaniaRemitente = JFrameRegistrar.txtCorreoCompaniaRemitente.getText();
-            String telefonoCompaniaRemitente = JFrameRegistrar.txtTelefonoCompaniaRemitente.getText();
-            
-            //FORMULARIOS DE DESTINATARIO
-            String docDestinatario = JFrameRegistrar.txtDocDestinatario.getText();
-            String cargo = JFrameRegistrar.txtCargo.getText();
-            String correoDestinatario = JFrameRegistrar.txtCorreoDestinatario.getText();
-            String area = JFrameRegistrar.txtArea.getText();
-            String nombres = JFrameRegistrar.txtNombresDestinatario.getText();
-            String telefonoDestinatario = JFrameRegistrar.txtTelefonoDestinatario.getText();
-            boolean reqRespuesta = JFrameRegistrar.jCheckBoxRequiereRespuesta.isSelected();
-            
+            try {
+                PreparedStatement ps = connection.prepareStatement(sql);
+                ps.setString(1, asunto);
+                ps.setString(2, numRadicado);
+                ps.setString(3, numAnexo);
+                ps.setDate(4, (Date) Date.valueOf(fecha));
+                ps.setString(5, tipoRadicado);
+                ps.setString(6, tipoDocumento);
+                ps.setString(7, selecEstudiante);
+                ps.setString(8, selecEmpresa);
+                ps.setString(9, selecDestinatario);
+                ps.setString(10, reqRespuesta);
+                int consulta4 = ps.executeUpdate();
+                
+                if(consulta4 > 0) {
+                    JOptionPane.showMessageDialog(null, "Datos del documento subidos con exito"); 
+                }
+            } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error al subir datos\n" + ex);
+            }
         }
     }
     
-    public void inicio() {
-        ArrayList<Documento> arrayListDocumentos = ctDoc.getDocumentos();
+    public static String getJchReqRespuesta() {
         
-        for(Documento documento : arrayListDocumentos) {
-            System.out.println(documento.getNombreArchivo());
-            System.out.println(documento.getRutaArchivo());
+        if(jCheckBoxRequiereRespuesta.isSelected()) {
+            return "1";
         }
-        
-        File pdf = new File(arrayListDocumentos.get(1).getRutaArchivo());
-        // ctDoc.visualizarDocumento(pdf);
-        
+        else {
+            return "0";
+        }
     }
-    
-    //public void 
+
+    public void dispose() {
+    }
 }
+
+    
