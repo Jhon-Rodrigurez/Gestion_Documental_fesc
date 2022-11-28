@@ -22,7 +22,6 @@ public class ControladorConsultar implements ActionListener{
     Datos datos;
     ControladorEstudianteRemitente ctEstudiante;
     ControladorEmpresaRemitente ctEmpresa;
-    ControladorTabla ctTb;
     
     public ControladorConsultar(JFrameConsultar jFrameConsultar) {
         this.jFrameConsultar = jFrameConsultar;
@@ -50,12 +49,12 @@ public class ControladorConsultar implements ActionListener{
             
             if (tpEntidad.equals("Estudiante")) {
                 datos = ctEstudiante.getInfoDocumentos(identificacion, filtro, filtroFecha);
-                ctTb = new ControladorTabla(jFrameConsultar, datos);
+                ControladorTabla ctTb = new ControladorTabla(jFrameConsultar, datos);
                 ctTb.mostrarConsulta(true);
                 
             } else if (tpEntidad.equals("Empresa")) {
                 datos = ctEmpresa.getInfoDocumentos(identificacion, filtro, filtroFecha);
-                ctTb = new ControladorTabla(jFrameConsultar, datos);
+                ControladorTabla ctTb = new ControladorTabla(jFrameConsultar, datos);
                 ctTb.mostrarConsulta(false);
                 
             } else {

@@ -37,7 +37,6 @@ public class JFrameConsultar extends javax.swing.JFrame {
         jTbConsultarC = new javax.swing.JToggleButton();
         jTbRegistrarC = new javax.swing.JButton();
         jTfFiltroFechaC = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,17 +60,24 @@ public class JFrameConsultar extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 3, 12))); // NOI18N
 
         jTfIdentificacionC.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Identificacion", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
+        jTfIdentificacionC.setMaximumSize(new java.awt.Dimension(300, 44));
+        jTfIdentificacionC.setMinimumSize(new java.awt.Dimension(150, 44));
+        jTfIdentificacionC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTfIdentificacionCActionPerformed(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setForeground(new java.awt.Color(255, 51, 51));
@@ -79,12 +85,18 @@ public class JFrameConsultar extends javax.swing.JFrame {
 
         jCbTipoEntidadC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Compañia" }));
         jCbTipoEntidadC.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de Entidad", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
+        jCbTipoEntidadC.setMaximumSize(new java.awt.Dimension(200, 44));
+        jCbTipoEntidadC.setMinimumSize(new java.awt.Dimension(150, 44));
 
         jCbFiltoC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos los radicados", "Radicados que tienen respuesta", "Solo radicados de entrega", "Solo radicados de respuesta" }));
         jCbFiltoC.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar por:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
+        jCbFiltoC.setMaximumSize(new java.awt.Dimension(300, 44));
+        jCbFiltoC.setMinimumSize(new java.awt.Dimension(150, 44));
 
         jTbConsultarC.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jTbConsultarC.setText("CONSULTAR");
+        jTbConsultarC.setMaximumSize(new java.awt.Dimension(300, 44));
+        jTbConsultarC.setMinimumSize(new java.awt.Dimension(150, 44));
         jTbConsultarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTbConsultarCActionPerformed(evt);
@@ -92,7 +104,7 @@ public class JFrameConsultar extends javax.swing.JFrame {
         });
 
         jTbRegistrarC.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        jTbRegistrarC.setText("<-- REGISTRAR");
+        jTbRegistrarC.setText("VENTANA GUARDAR");
         jTbRegistrarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTbRegistrarCActionPerformed(evt);
@@ -100,59 +112,49 @@ public class JFrameConsultar extends javax.swing.JFrame {
         });
 
         jTfFiltroFechaC.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Año:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
-
-        jLabel14.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CONSULTAR DATOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
+        jTfFiltroFechaC.setMaximumSize(new java.awt.Dimension(300, 44));
+        jTfFiltroFechaC.setMinimumSize(new java.awt.Dimension(150, 44));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(459, 459, 459)
-                .addComponent(jTbRegistrarC)
-                .addContainerGap(64, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jTbRegistrarC)
+                .addGap(31, 31, 31))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jCbTipoEntidadC, 0, 153, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jCbTipoEntidadC, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65)
-                        .addComponent(jCbFiltoC, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(jTbConsultarC, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTfIdentificacionC, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(jTfFiltroFechaC, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(194, 194, 194))
+                        .addGap(4, 4, 4)
+                        .addComponent(jTfIdentificacionC, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCbFiltoC, 0, 150, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTfFiltroFechaC, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTbConsultarC, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTbRegistrarC)
-                    .addComponent(jLabel14))
+                .addComponent(jTbRegistrarC)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jCbTipoEntidadC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCbFiltoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
+                    .addComponent(jTfIdentificacionC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCbFiltoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTfFiltroFechaC, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTbConsultarC, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTfIdentificacionC, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTfFiltroFechaC, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addComponent(jTbConsultarC, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,12 +168,12 @@ public class JFrameConsultar extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 238, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 144, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 414, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(0, 505, Short.MAX_VALUE)))
         );
 
         pack();
@@ -182,13 +184,12 @@ public class JFrameConsultar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTbConsultarCActionPerformed
 
     private void jTbRegistrarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTbRegistrarCActionPerformed
-         JFrameRegistrar rgf = new JFrameRegistrar();
-         rgf.setVisible(true);
-         rgf.pack();
-         rgf.setLocationRelativeTo(null);
-         rgf.setDefaultCloseOperation(JFrameRegistrar.EXIT_ON_CLOSE);
-         this.dispose();
+     
     }//GEN-LAST:event_jTbRegistrarCActionPerformed
+
+    private void jTfIdentificacionCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTfIdentificacionCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTfIdentificacionCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,7 +232,6 @@ public class JFrameConsultar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> jCbFiltoC;
     public javax.swing.JComboBox<String> jCbTipoEntidadC;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

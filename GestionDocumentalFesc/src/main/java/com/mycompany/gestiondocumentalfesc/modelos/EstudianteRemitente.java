@@ -54,9 +54,7 @@ public class EstudianteRemitente extends Persona {
         String telefono = "3000899306";
         
         EstudianteRemitente e1 = new EstudianteRemitente(carrera, semestre, id, doc, nombres, apellidos, correo, telefono);
-        
-        EstudianteRemitente e11 = new EstudianteRemitente(carrera, semestre, id, doc, nombres, apellidos, correo, telefono);
-        
+       
         carrera = 5;
         semestre = 3;
         id = 2;
@@ -69,7 +67,6 @@ public class EstudianteRemitente extends Persona {
         EstudianteRemitente e2 = new EstudianteRemitente(carrera, semestre, id, doc, nombres, apellidos, correo, telefono);
         
         arrayListEstudiantes.add(e1);
-        arrayListEstudiantes.add(e11);
         arrayListEstudiantes.add(e2);
         
         return arrayListEstudiantes;

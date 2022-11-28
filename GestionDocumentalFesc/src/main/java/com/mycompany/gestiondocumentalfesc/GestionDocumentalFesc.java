@@ -13,7 +13,7 @@ public class GestionDocumentalFesc {
         JFrameConsultar jfc = new JFrameConsultar();
         
         ControladorConsultar ctC = new ControladorConsultar(jfc);
-        ctC.inicio();
+        ctC.iniciar();
         
         jfc.setVisible(true);
         jfc.setLocationRelativeTo(null);

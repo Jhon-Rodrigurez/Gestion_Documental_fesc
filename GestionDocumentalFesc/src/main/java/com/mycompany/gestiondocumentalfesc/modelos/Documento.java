@@ -243,7 +243,7 @@ public class Documento {
         
         int id = 1;
         String nomDoc = "pdf1.pdf";
-        String rutaDoc = "C:\\Users\\Familia\\Documents\\pdf\\pdf1.pdf";
+        String rutaDoc = "C:\\Archivos\\pdf1.pdf";
         long dateTime = System.currentTimeMillis();
         Timestamp fecha = new Timestamp(dateTime);
         String numRad = "3245";
@@ -260,7 +260,7 @@ public class Documento {
         
         id = 2;
         nomDoc = "pdf2.pdf";
-        rutaDoc = "C:\\Users\\Familia\\Documents\\pdf\\pdf2.pdf";
+        rutaDoc = "C:\\Archivos\\pdf2.pdf";
         dateTime = System.currentTimeMillis();
         fecha = new Timestamp(dateTime);
         numRad = "7436";
@@ -277,7 +277,7 @@ public class Documento {
         
         id = 3;
         nomDoc = "pdf3.pdf";
-        rutaDoc = "C:\\Users\\Familia\\Documents\\pdf\\pdf3.pdf";
+        rutaDoc = "C:\\Archivos\\pdf3.pdf";
         dateTime = System.currentTimeMillis();
         fecha = new Timestamp(dateTime);
         numRad = "0983";
@@ -294,7 +294,7 @@ public class Documento {
         
         id = 4;
         nomDoc = "pdf4.pdf";
-        rutaDoc = "C:\\Users\\Familia\\Documents\\pdf\\pdf4.pdf";
+        rutaDoc = "C:\\Archivos\\pdf4.pdf";
         dateTime = System.currentTimeMillis();
         fecha = new Timestamp(dateTime);
         numRad = "8567";
@@ -311,7 +311,7 @@ public class Documento {
         
         id = 5;
         nomDoc = "pdf5.pdf";
-        rutaDoc = "C:\\Users\\Familia\\Documents\\pdf\\pdf5.pdf";
+        rutaDoc = "C:\\Archivos\\pdf5.pdf";
         dateTime = System.currentTimeMillis();
         fecha = new Timestamp(dateTime);
         numRad = "0983";
