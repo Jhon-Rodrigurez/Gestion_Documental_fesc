@@ -41,8 +41,8 @@ public class JFrameConsultar extends javax.swing.JFrame {
         jTfFiltroFechaC = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTbRegistrarC = new javax.swing.JLabel();
         lbCerrarSesion = new javax.swing.JLabel();
+        jTbRegistrarC = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -167,20 +167,12 @@ public class JFrameConsultar extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("GESTION DOCUMENTAL");
 
-        jTbRegistrarC.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jTbRegistrarC.setForeground(new java.awt.Color(255, 255, 255));
-        jTbRegistrarC.setText("Registrar");
-        jTbRegistrarC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTbRegistrarC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTbRegistrarCMouseClicked(evt);
-            }
-        });
-
         lbCerrarSesion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lbCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
         lbCerrarSesion.setText("Cerrar sesion");
         lbCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jTbRegistrarC.setText("Registrar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -189,8 +181,8 @@ public class JFrameConsultar extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
-                .addComponent(jTbRegistrarC, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
+                .addComponent(jTbRegistrarC)
                 .addGap(18, 18, 18)
                 .addComponent(lbCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
@@ -201,9 +193,9 @@ public class JFrameConsultar extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTbRegistrarC, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9))
+                    .addComponent(lbCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTbRegistrarC, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, -1));
@@ -244,15 +236,6 @@ public class JFrameConsultar extends javax.swing.JFrame {
     private void jCbFiltoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbFiltoCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCbFiltoCActionPerformed
-
-    private void jTbRegistrarCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbRegistrarCMouseClicked
-           JFrameRegistrarDocumento rgf = new JFrameRegistrarDocumento();
-           rgf.setVisible(true);
-           rgf.pack();
-           rgf.setLocationRelativeTo(null);
-           rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-           this.dispose();
-    }//GEN-LAST:event_jTbRegistrarCMouseClicked
 
     /**
      * @param args the command line arguments
@@ -305,7 +288,7 @@ public class JFrameConsultar extends javax.swing.JFrame {
     public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable jTablaC;
     public javax.swing.JToggleButton jTbConsultarC;
-    public javax.swing.JLabel jTbRegistrarC;
+    public javax.swing.JButton jTbRegistrarC;
     public javax.swing.JTextField jTfFiltroFechaC;
     public javax.swing.JTextField jTfIdentificacionC;
     public javax.swing.JLabel lbCerrarSesion;
