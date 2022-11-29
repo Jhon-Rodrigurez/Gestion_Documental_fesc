@@ -36,12 +36,12 @@ public class JFrameConsultar extends javax.swing.JFrame {
         jTfIdentificacionC = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jCbTipoEntidadC = new javax.swing.JComboBox<>();
-        jCbFiltroC = new javax.swing.JComboBox<>();
+        jCbFiltoC = new javax.swing.JComboBox<>();
         jTbConsultarC = new javax.swing.JToggleButton();
         jTfFiltroFechaC = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lbRegistrar = new javax.swing.JLabel();
+        jTbRegistrarC = new javax.swing.JLabel();
         lbCerrarSesion = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -97,12 +97,12 @@ public class JFrameConsultar extends javax.swing.JFrame {
         jCbTipoEntidadC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Compañia" }));
         jCbTipoEntidadC.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de Entidad", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
 
-        jCbFiltroC.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jCbFiltroC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos los radicados", "Radicados que tienen respuesta", "Solo radicados de entrega", "Solo radicados de respuesta" }));
-        jCbFiltroC.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar por:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
-        jCbFiltroC.addActionListener(new java.awt.event.ActionListener() {
+        jCbFiltoC.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jCbFiltoC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos los radicados", "Radicados que tienen respuesta", "Solo radicados de entrega", "Solo radicados de respuesta" }));
+        jCbFiltoC.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar por:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 3, 12))); // NOI18N
+        jCbFiltoC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCbFiltroCActionPerformed(evt);
+                jCbFiltoCActionPerformed(evt);
             }
         });
 
@@ -129,7 +129,7 @@ public class JFrameConsultar extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jCbTipoEntidadC, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
-                        .addComponent(jCbFiltroC, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCbFiltoC, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -148,7 +148,7 @@ public class JFrameConsultar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCbTipoEntidadC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCbFiltroC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCbFiltoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
@@ -167,13 +167,13 @@ public class JFrameConsultar extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("GESTION DOCUMENTAL");
 
-        lbRegistrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
-        lbRegistrar.setText("Registrar");
-        lbRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lbRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTbRegistrarC.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jTbRegistrarC.setForeground(new java.awt.Color(255, 255, 255));
+        jTbRegistrarC.setText("Registrar");
+        jTbRegistrarC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTbRegistrarC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbRegistrarMouseClicked(evt);
+                jTbRegistrarCMouseClicked(evt);
             }
         });
 
@@ -190,7 +190,7 @@ public class JFrameConsultar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
-                .addComponent(lbRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTbRegistrarC, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lbCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
@@ -201,7 +201,7 @@ public class JFrameConsultar extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTbRegistrarC, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9))
         );
@@ -229,7 +229,7 @@ public class JFrameConsultar extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 760, -1));
@@ -241,18 +241,18 @@ public class JFrameConsultar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTbConsultarCActionPerformed
 
-    private void jCbFiltroCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbFiltroCActionPerformed
+    private void jCbFiltoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbFiltoCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCbFiltroCActionPerformed
+    }//GEN-LAST:event_jCbFiltoCActionPerformed
 
-    private void lbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarMouseClicked
+    private void jTbRegistrarCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbRegistrarCMouseClicked
            JFrameRegistrarDocumento rgf = new JFrameRegistrarDocumento();
            rgf.setVisible(true);
            rgf.pack();
            rgf.setLocationRelativeTo(null);
            rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
            this.dispose();
-    }//GEN-LAST:event_lbRegistrarMouseClicked
+    }//GEN-LAST:event_jTbRegistrarCMouseClicked
 
     /**
      * @param args the command line arguments
@@ -293,7 +293,7 @@ public class JFrameConsultar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox<String> jCbFiltroC;
+    public javax.swing.JComboBox<String> jCbFiltoC;
     public javax.swing.JComboBox<String> jCbTipoEntidadC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -305,9 +305,9 @@ public class JFrameConsultar extends javax.swing.JFrame {
     public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable jTablaC;
     public javax.swing.JToggleButton jTbConsultarC;
+    public javax.swing.JLabel jTbRegistrarC;
     public javax.swing.JTextField jTfFiltroFechaC;
     public javax.swing.JTextField jTfIdentificacionC;
     public javax.swing.JLabel lbCerrarSesion;
-    public javax.swing.JLabel lbRegistrar;
     // End of variables declaration//GEN-END:variables
 }

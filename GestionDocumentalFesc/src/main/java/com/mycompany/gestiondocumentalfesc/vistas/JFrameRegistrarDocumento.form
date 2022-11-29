@@ -354,9 +354,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBotonSeleccionarArchivo">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f0" green="f0" red="f0" type="rgb"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>
             </Property>
@@ -539,7 +536,7 @@
                       <Component id="lbConsultar" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="lbCerrarSesion" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="10" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

@@ -30,7 +30,7 @@ public class ControladorConsultar implements ActionListener{
         this.ctEmpresa = new ControladorEmpresaRemitente();
     }
     
-    public void inicio() {
+    public void iniciar() {
         setCbFiltro();
         setCbTpEntidad();
         jFrameConsultar.jTbConsultarC.addActionListener(this);

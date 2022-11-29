@@ -4,14 +4,11 @@
  */
 package com.mycompany.gestiondocumentalfesc.vistas;
 
-import static com.mycompany.gestiondocumentalfesc.RenderImgJTable.ControladorTabla.copyFile;
 import com.mycompany.gestiondocumentalfesc.conexion.Conexion;
+import static com.mycompany.gestiondocumentalfesc.controladores.ControladorDetalles.copyFile;
 import com.mycompany.gestiondocumentalfesc.modelos.Destinatario;
 import com.mycompany.gestiondocumentalfesc.modelos.EmpresaRemitente;
 import com.mycompany.gestiondocumentalfesc.modelos.EstudianteRemitente;
-import com.mycompany.gestiondocumentalfesc.modelos.ListadoDestinatarios;
-import com.mycompany.gestiondocumentalfesc.modelos.ListadoEmpresas;
-import com.mycompany.gestiondocumentalfesc.modelos.ListadoEstudiantes;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,6 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -530,7 +528,7 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
         
         DefaultComboBoxModel comboEstudiante = new DefaultComboBoxModel();
         c.setModel(comboEstudiante);
-        ListadoEstudiantes listadoEstudiantes = new ListadoEstudiantes();
+        ArrayList<EstudianteRemitente> listadoEstudiantes = new ArrayList<>();
         
         String sql = "SELECT CONCAT(docEstudiante,' - ', nombresEstudiante) FROM estudiante ORDER BY idEstudiante DESC";
         try {
@@ -540,7 +538,7 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
             while (rs.next()) {
                 EstudianteRemitente estudiante = new EstudianteRemitente();
                 estudiante.setNombres(rs.getString(1));
-                listadoEstudiantes.agregarEstudiantes(estudiante);
+                listadoEstudiantes.add(estudiante);
                 comboEstudiante.addElement(estudiante.getNombres());
                 
                 System.out.println("Datos de estudiantes cargados con exito");
@@ -554,7 +552,7 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
         
         DefaultComboBoxModel comboEmpresa = new DefaultComboBoxModel();
         c.setModel(comboEmpresa);
-        ListadoEmpresas listadoEmpresas = new ListadoEmpresas();
+        ArrayList<EmpresaRemitente> listadoEmpresas = new ArrayList<>();
         
         String sql = "SELECT CONCAT(docEmpresa,' - ', nombreEmpresa) FROM empresa ORDER BY idEmpresa DESC";
         
@@ -565,7 +563,7 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
             while(rs.next()) {
                 EmpresaRemitente empresa = new EmpresaRemitente();
                 empresa.setNombreEmpresa(rs.getString(1));
-                listadoEmpresas.agregarEmpresas(empresa);
+                listadoEmpresas.add(empresa);
                 comboEmpresa.addElement(empresa.getNombreEmpresa());
                 
                 System.out.println("Datos de empresas cargados con exito");
@@ -579,7 +577,7 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
         
         DefaultComboBoxModel comboDestinatario = new DefaultComboBoxModel();
         c.setModel(comboDestinatario);
-        ListadoDestinatarios listadoDestinatarios = new ListadoDestinatarios();
+        ArrayList<Destinatario> listadoDestinatarios = new ArrayList<>();
         
         String sql = "SELECT CONCAT(docDestinatario, ' - ', nombreDestinatario) FROM destinatario ORDER BY idDestinatario DESC";
         
@@ -590,7 +588,7 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
             while (rs.next()) {
                 Destinatario destinatario = new Destinatario();
                 destinatario.setNombres(rs.getString(1));
-                listadoDestinatarios.agregarDestinatarios(destinatario);
+                listadoDestinatarios.add(destinatario);
                 comboDestinatario.addElement(destinatario.getNombres());
                 
                 System.out.println("Datos de destinatarios cargados con exito");

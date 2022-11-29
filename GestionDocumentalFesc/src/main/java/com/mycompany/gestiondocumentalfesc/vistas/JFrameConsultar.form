@@ -115,7 +115,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jCbTipoEntidadC" min="-2" pref="216" max="-2" attributes="0"/>
                           <EmptySpace pref="143" max="32767" attributes="0"/>
-                          <Component id="jCbFiltroC" min="-2" pref="246" max="-2" attributes="0"/>
+                          <Component id="jCbFiltoC" min="-2" pref="246" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -140,7 +140,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jCbTipoEntidadC" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jCbFiltroC" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCbFiltoC" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" pref="24" max="-2" attributes="0"/>
@@ -211,7 +211,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jCbFiltroC">
+        <Component class="javax.swing.JComboBox" name="jCbFiltoC">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
@@ -233,7 +233,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCbFiltroCActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCbFiltoCActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -298,7 +298,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="248" max="-2" attributes="0"/>
                   <EmptySpace pref="307" max="32767" attributes="0"/>
-                  <Component id="lbRegistrar" min="-2" pref="67" max="-2" attributes="0"/>
+                  <Component id="jTbRegistrarC" min="-2" pref="67" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lbCerrarSesion" min="-2" pref="89" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -311,7 +311,7 @@
                   <EmptySpace pref="15" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="lbRegistrar" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="jTbRegistrarC" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="lbCerrarSesion" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
@@ -331,7 +331,7 @@
             <Property name="text" type="java.lang.String" value="GESTION DOCUMENTAL"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbRegistrar">
+        <Component class="javax.swing.JLabel" name="jTbRegistrarC">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>
@@ -345,7 +345,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbRegistrarMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTbRegistrarCMouseClicked"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -402,7 +402,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="9" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
