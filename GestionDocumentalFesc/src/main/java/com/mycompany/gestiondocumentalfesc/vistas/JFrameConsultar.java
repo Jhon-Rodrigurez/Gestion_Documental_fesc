@@ -5,6 +5,7 @@
 package com.mycompany.gestiondocumentalfesc.vistas;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,8 +42,8 @@ public class JFrameConsultar extends javax.swing.JFrame {
         jTfFiltroFechaC = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lbCerrarSesion = new javax.swing.JLabel();
         jTbRegistrarC = new javax.swing.JButton();
+        jbCerrarSesion = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -76,11 +77,11 @@ public class JFrameConsultar extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 760, 270));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 760, 350));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 3, 12))); // NOI18N
@@ -167,12 +168,25 @@ public class JFrameConsultar extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("GESTION DOCUMENTAL");
 
-        lbCerrarSesion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lbCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        lbCerrarSesion.setText("Cerrar sesion");
-        lbCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
+        jTbRegistrarC.setBackground(new java.awt.Color(255, 51, 51));
+        jTbRegistrarC.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jTbRegistrarC.setForeground(new java.awt.Color(255, 255, 255));
         jTbRegistrarC.setText("Registrar");
+        jTbRegistrarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTbRegistrarCActionPerformed(evt);
+            }
+        });
+
+        jbCerrarSesion.setBackground(new java.awt.Color(255, 51, 51));
+        jbCerrarSesion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jbCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        jbCerrarSesion.setText("Cerrar sesion");
+        jbCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -181,21 +195,21 @@ public class JFrameConsultar extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
-                .addComponent(jTbRegistrarC)
-                .addGap(18, 18, 18)
-                .addComponent(lbCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                .addComponent(jTbRegistrarC, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jbCerrarSesion)
+                .addGap(30, 30, 30))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTbRegistrarC, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10))
+                    .addComponent(jTbRegistrarC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, -1));
@@ -236,6 +250,32 @@ public class JFrameConsultar extends javax.swing.JFrame {
     private void jCbFiltoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbFiltoCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCbFiltoCActionPerformed
+
+    private void jTbRegistrarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTbRegistrarCActionPerformed
+        JFrameRegistrarDocumento jfrd = new JFrameRegistrarDocumento();
+        jfrd.setVisible(true);
+        jfrd.pack();
+        jfrd.setLocationRelativeTo(null);
+        jfrd.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jTbRegistrarCActionPerformed
+
+    private void jbCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarSesionActionPerformed
+        String botones[] = {"Si","No"};
+            int eleccion = JOptionPane.showOptionDialog(this, "¿Desea cerrar sesion?", "Cerrar sesion", 0, 0, null,
+            botones, this);
+        
+        if(eleccion == JOptionPane.YES_OPTION) {
+            JFrameLoginUsuario jflu = new JFrameLoginUsuario();
+            jflu.setVisible(true);
+            jflu.pack();
+            jflu.setLocationRelativeTo(null);
+            jflu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+        else if(eleccion == JOptionPane.NO_OPTION) {   
+        }
+    }//GEN-LAST:event_jbCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,6 +331,6 @@ public class JFrameConsultar extends javax.swing.JFrame {
     public javax.swing.JButton jTbRegistrarC;
     public javax.swing.JTextField jTfFiltroFechaC;
     public javax.swing.JTextField jTfIdentificacionC;
-    public javax.swing.JLabel lbCerrarSesion;
+    public javax.swing.JButton jbCerrarSesion;
     // End of variables declaration//GEN-END:variables
 }

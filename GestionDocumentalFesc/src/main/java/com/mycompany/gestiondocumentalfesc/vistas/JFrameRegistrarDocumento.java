@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.mycompany.gestiondocumentalfesc.vistas;
 
 import com.mycompany.gestiondocumentalfesc.conexion.Conexion;
@@ -73,16 +70,19 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
         jBotonSubirDatos = new javax.swing.JToggleButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtNombreArchivo = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lbConsultar = new javax.swing.JLabel();
-        lbCerrarSesion = new javax.swing.JLabel();
+        jbVentanaConsultar = new javax.swing.JButton();
+        jbCerrarSesion = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(6);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -131,7 +131,6 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
         jcbxSeleccionarDestinatario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jcbxSeleccionarDestinatario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Destinatario", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        jBotonSeleccionarArchivo.setBackground(new java.awt.Color(240, 240, 240));
         jBotonSeleccionarArchivo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jBotonSeleccionarArchivo.setText("Seleccionar archivo");
         jBotonSeleccionarArchivo.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +140,7 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
         });
 
         txtRutaArchivo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtRutaArchivo.setText(".");
 
         jcbRequiereRespuesta.setBackground(new java.awt.Color(255, 255, 255));
         jcbRequiereRespuesta.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
@@ -193,6 +193,9 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel4.setText("Nombre del archivo:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -220,28 +223,33 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
                                 .addComponent(jcbxSeleccionarDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                            .addComponent(txtAsunto))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNumeroRadicado)
+                            .addComponent(jcbxTipoRadicado, 0, 240, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jDateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                                    .addComponent(txtAsunto))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNumeroRadicado)
-                                    .addComponent(jcbxTipoRadicado, 0, 240, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNumeroAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jcbxTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jBotonSeleccionarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtRutaArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtNumeroAnexos, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbxTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBotonSubirDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(305, 305, 305))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(306, 306, 306)
+                        .addComponent(jBotonSubirDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jBotonSeleccionarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRutaArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombreArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,16 +278,20 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtRutaArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBotonSeleccionarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtNombreArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBotonSeleccionarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRutaArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
                 .addComponent(jBotonSubirDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 760, 430));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 760, 500));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
@@ -291,20 +303,25 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("GESTION DOCUMENTAL");
 
-        lbConsultar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lbConsultar.setForeground(new java.awt.Color(255, 255, 255));
-        lbConsultar.setText("Consultar");
-        lbConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lbConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbConsultarMouseClicked(evt);
+        jbVentanaConsultar.setBackground(new java.awt.Color(255, 51, 51));
+        jbVentanaConsultar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jbVentanaConsultar.setForeground(new java.awt.Color(255, 255, 255));
+        jbVentanaConsultar.setText("Consultar");
+        jbVentanaConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVentanaConsultarActionPerformed(evt);
             }
         });
 
-        lbCerrarSesion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lbCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        lbCerrarSesion.setText("Cerrar sesion");
-        lbCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbCerrarSesion.setBackground(new java.awt.Color(255, 51, 51));
+        jbCerrarSesion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jbCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        jbCerrarSesion.setText("Cerrar sesion");
+        jbCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -313,21 +330,21 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
-                .addComponent(lbConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(lbCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
+                .addComponent(jbVentanaConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jbCerrarSesion)
+                .addGap(19, 19, 19))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(jbCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbVentanaConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 60));
@@ -359,15 +376,6 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lbConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbConsultarMouseClicked
-        JFrameConsultar rgf = new JFrameConsultar();
-        rgf.setVisible(true);
-        rgf.pack();
-        rgf.setLocationRelativeTo(null);
-        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_lbConsultarMouseClicked
 
     private void jBotonAgregarRemitentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonAgregarRemitentesActionPerformed
         JFrameRegistrarEntidades rgf = new JFrameRegistrarEntidades();
@@ -408,36 +416,41 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
             } catch (IOException ex) {
                     System.out.println("Error al subir el archivo");
             }
-        }
+        } 
     }//GEN-LAST:event_jBotonSeleccionarArchivoActionPerformed
 
     private void jBotonSubirDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonSubirDatosActionPerformed
             String sql;
-            String asunto = txtAsunto.getText();
-            String numRadicado = txtNumeroRadicado.getText();
-            String tipoRadicado = jcbxTipoRadicado.getSelectedItem().toString();
+            String nombreArchivo = txtNombreArchivo.getText();
+            String rutaArchivo = txtRutaArchivo.getText();
             String fecha = ((JTextField)jDateFecha.getDateEditor().getUiComponent()).getText();
+            String numRadicado = txtNumeroRadicado.getText();
+            String tipoRadicado = getTipoRadicado();
+            String tipoDocumento = getTipoDocumento();
+            String asunto = txtAsunto.getText();
             String numAnexo = txtNumeroAnexos.getText();
-            String tipoDocumento = jcbxTipoDocumento.getSelectedItem().toString();
-            String selecEstudiante = jcbxSeleccionarEstudiante.getSelectedItem().toString();
-            String selecEmpresa = jcbxSeleccionarEmpresa.getSelectedItem().toString();
-            String selecDestinatario = jcbxSeleccionarDestinatario.getSelectedItem().toString();
             String reqRespuesta = getJhxReqRespuesta();
+//            String selecEstudiante = jcbxSeleccionarEstudiante.getSelectedItem().toString();
+//            String selecEmpresa = jcbxSeleccionarEmpresa.getSelectedItem().toString();
+//            String selecDestinatario = jcbxSeleccionarDestinatario.getSelectedItem().toString();
+
             
-            sql = "INSERT INTO `documento`(`idDocumento`, `asunto`, `numeroRadicado`, `numeroAnexo`, `fecha`, `tipoRadicado`, `tipoDocumento`, `estudianteNombre`, `empresaNombre`, `destinatarioNombre`, `reqRespuesta`) VALUES (null,?,?,?,?,?,?,?,?,?,?)";
+            sql = "INSERT INTO `documento`(`nombre_archivo`, `ruta_archivo`, `fecha`, `num_radicado`, `tipo_radicado`, `tipo_documento`, `asunto`, `anexos`, `req_respuesta`) VALUES (?,?,?,?,?,?,?,?,?)";
             
             try {
                 PreparedStatement ps = connection.prepareStatement(sql);
-                ps.setString(1, asunto);
-                ps.setString(2, numRadicado);
-                ps.setString(3, numAnexo);
-                ps.setDate(4, (Date) Date.valueOf(fecha));
+                ps.setString(1, nombreArchivo);
+                ps.setString(2, rutaArchivo);
+                ps.setDate(3, (Date) Date.valueOf(fecha));
+                ps.setString(4, numRadicado);
                 ps.setString(5, tipoRadicado);
                 ps.setString(6, tipoDocumento);
-                ps.setString(7, selecEstudiante);
-                ps.setString(8, selecEmpresa);
-                ps.setString(9, selecDestinatario);
-                ps.setString(10, reqRespuesta);
+                ps.setString(7, asunto);
+                ps.setString(8, numAnexo);
+                ps.setString(9, reqRespuesta);               
+//                ps.setString(7, selecEstudiante);
+//                ps.setString(8, selecEmpresa);
+//                ps.setString(9, selecDestinatario);
                 int consulta4 = ps.executeUpdate();
                 
                 if(consulta4 > 0) {
@@ -458,8 +471,35 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbxSeleccionarEstudianteActionPerformed
 
     private void jcbxTipoDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbxTipoDocumentoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jcbxTipoDocumentoActionPerformed
+
+    private void jbVentanaConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVentanaConsultarActionPerformed
+        JFrameConsultar rgf = new JFrameConsultar();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jbVentanaConsultarActionPerformed
+
+    private void jbCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarSesionActionPerformed
+
+        String botones[] = {"Si","No"};
+            int eleccion = JOptionPane.showOptionDialog(this, "¿Desea cerrar sesion?", "Cerrar sesion", 0, 0, null,
+            botones, this);
+        
+        if(eleccion == JOptionPane.YES_OPTION) {
+            JFrameLoginUsuario jflu = new JFrameLoginUsuario();
+            jflu.setVisible(true);
+            jflu.pack();
+            jflu.setLocationRelativeTo(null);
+            jflu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+        else if(eleccion == JOptionPane.NO_OPTION) {   
+        }
+    }//GEN-LAST:event_jbCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -504,21 +544,23 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    public javax.swing.JButton jbCerrarSesion;
+    public javax.swing.JButton jbVentanaConsultar;
     public javax.swing.JCheckBox jcbRequiereRespuesta;
     public javax.swing.JComboBox<String> jcbxSeleccionarDestinatario;
     public javax.swing.JComboBox<String> jcbxSeleccionarEmpresa;
     public javax.swing.JComboBox<String> jcbxSeleccionarEstudiante;
     public javax.swing.JComboBox<String> jcbxTipoDocumento;
     public javax.swing.JComboBox<String> jcbxTipoRadicado;
-    public javax.swing.JLabel lbCerrarSesion;
-    public javax.swing.JLabel lbConsultar;
     public javax.swing.JTextField txtAsunto;
+    public javax.swing.JTextField txtNombreArchivo;
     public javax.swing.JTextField txtNumeroAnexos;
     public javax.swing.JTextField txtNumeroRadicado;
     public javax.swing.JTextField txtRutaArchivo;
@@ -530,7 +572,7 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
         c.setModel(comboEstudiante);
         ArrayList<EstudianteRemitente> listadoEstudiantes = new ArrayList<>();
         
-        String sql = "SELECT CONCAT(docEstudiante,' - ', nombresEstudiante) FROM estudiante ORDER BY idEstudiante DESC";
+        String sql = "SELECT CONCAT(documento, ' - ', nombres) FROM estudiante ORDER BY id DESC";
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -554,7 +596,7 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
         c.setModel(comboEmpresa);
         ArrayList<EmpresaRemitente> listadoEmpresas = new ArrayList<>();
         
-        String sql = "SELECT CONCAT(docEmpresa,' - ', nombreEmpresa) FROM empresa ORDER BY idEmpresa DESC";
+        String sql = "SELECT CONCAT(nombre_empresa, ' - ', documento) FROM empresa ORDER BY id DESC";
         
         try {
             Statement st = connection.createStatement();
@@ -579,7 +621,7 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
         c.setModel(comboDestinatario);
         ArrayList<Destinatario> listadoDestinatarios = new ArrayList<>();
         
-        String sql = "SELECT CONCAT(docDestinatario, ' - ', nombreDestinatario) FROM destinatario ORDER BY idDestinatario DESC";
+        String sql = "SELECT CONCAT(documento, ' - ', nombres,' ',apellidos) FROM destinatario ORDER BY id DESC";
         
         try {
             Statement st = connection.createStatement();
@@ -611,6 +653,62 @@ public class JFrameRegistrarDocumento extends javax.swing.JFrame {
         JFrameRegistrarDocumento main = new JFrameRegistrarDocumento();
         main.setVisible(true);
         this.dispose(); 
+    }
+
+    private String getTipoRadicado() {
+        if(jcbxTipoRadicado.getSelectedItem().equals("Entrega")) {
+            return "1";
+        }
+        else if(jcbxTipoRadicado.getSelectedItem().equals("Respuesta")) {
+            return "2";
+        }
+        return null; 
+    }
+
+    private String getTipoDocumento() {
+        if(jcbxTipoDocumento.getSelectedItem().equals("Carta")) {
+            return "1";
+        }
+        else if (jcbxTipoDocumento.getSelectedItem().equals("Acta")){
+            return "2";
+        }
+        else if (jcbxTipoDocumento.getSelectedItem().equals("Copia")) {
+            return "3";
+        }
+        else if (jcbxTipoDocumento.getSelectedItem().equals("Peticion")) {
+            return "4";
+        }
+        else if (jcbxTipoDocumento.getSelectedItem().equals("Solicitud")) {
+            return "5";
+        }
+        else if (jcbxTipoDocumento.getSelectedItem().equals("Derecho de peticion")) {
+            return "6";
+        }
+        else if (jcbxTipoDocumento.getSelectedItem().equals("Citacion")) {
+            return "7";
+        }
+        else if (jcbxTipoDocumento.getSelectedItem().equals("Memorando")) {
+            return "8";
+        }
+        else if (jcbxTipoDocumento.getSelectedItem().equals("Caja")) {
+            return "9";
+        }
+        else if (jcbxTipoDocumento.getSelectedItem().equals("Factura")) {
+            return "10";
+        }
+        else if (jcbxTipoDocumento.getSelectedItem().equals("Remision")) {
+            return "11";
+        }
+        else if (jcbxTipoDocumento.getSelectedItem().equals("Paquete")) {
+            return "12";
+        }
+        else if (jcbxTipoDocumento.getSelectedItem().equals("Otro")) {
+            return "13";
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "No se selecciono un tipo de documento");
+        }
+        return null;
     }
 
 }

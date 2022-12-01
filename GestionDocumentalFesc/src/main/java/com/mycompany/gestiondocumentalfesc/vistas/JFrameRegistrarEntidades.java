@@ -52,7 +52,7 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
         jtbGuardarDatosEmpresa = new javax.swing.JToggleButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        txtNombreEmpleadoEmpresa1 = new javax.swing.JTextField();
+        txtApellidoEmpleadoEmpresa = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         txtDocDestinatario = new javax.swing.JTextField();
         txtCargo = new javax.swing.JTextField();
@@ -63,10 +63,10 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
         jtbGuardarDatosDestinatario = new javax.swing.JToggleButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        txtNombresDestinatario1 = new javax.swing.JTextField();
+        txtApellidosDestinatario = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jbVolver = new javax.swing.JButton();
         panel1 = new java.awt.Panel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -75,6 +75,7 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
         setTitle("REGISTRAR");
         setBackground(new java.awt.Color(255, 255, 255));
         setExtendedState(6);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -100,7 +101,7 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
         jtbGuardarDatosEstudiante.setBackground(new java.awt.Color(255, 0, 0));
         jtbGuardarDatosEstudiante.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jtbGuardarDatosEstudiante.setForeground(new java.awt.Color(255, 255, 255));
-        jtbGuardarDatosEstudiante.setText("GUARDAR DATOS");
+        jtbGuardarDatosEstudiante.setText("GUARDAR DATOS DEL ESTUDIANTE");
         jtbGuardarDatosEstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtbGuardarDatosEstudianteActionPerformed(evt);
@@ -157,20 +158,24 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
                     .addComponent(txtTelefonoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDocEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtNombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtApellidosEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(25, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jtbGuardarDatosEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCorreoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtNombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtApellidosEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(25, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCorreoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jtbGuardarDatosEstudiante)
+                        .addGap(166, 166, 166))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,9 +193,9 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
                     .addComponent(txtSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCorreoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTelefonoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtbGuardarDatosEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtTelefonoEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jtbGuardarDatosEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(115, Short.MAX_VALUE))
         );
 
@@ -213,7 +218,7 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
         jtbGuardarDatosEmpresa.setBackground(new java.awt.Color(255, 0, 0));
         jtbGuardarDatosEmpresa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jtbGuardarDatosEmpresa.setForeground(new java.awt.Color(255, 255, 255));
-        jtbGuardarDatosEmpresa.setText("GUARDAR DATOS");
+        jtbGuardarDatosEmpresa.setText("GUARDAR DATOS DE LA EMPRESA");
         jtbGuardarDatosEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtbGuardarDatosEmpresaActionPerformed(evt);
@@ -243,7 +248,7 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        txtNombreEmpleadoEmpresa1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Apellidos del empleado", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtApellidoEmpleadoEmpresa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Apellidos del empleado", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -259,17 +264,15 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(txtTelefonoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(63, 63, 63)
-                                .addComponent(jtbGuardarDatosEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(txtNombreEmpleadoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNombreEmpleadoEmpresa1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtNombreEmpleadoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtCorreoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtApellidoEmpleadoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCorreoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(txtTelefonoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addComponent(jtbGuardarDatosEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -287,11 +290,11 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombreEmpleadoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCorreoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombreEmpleadoEmpresa1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApellidoEmpleadoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtbGuardarDatosEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefonoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtTelefonoEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jtbGuardarDatosEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(750, 750, 750))
         );
 
@@ -324,7 +327,7 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
         jtbGuardarDatosDestinatario.setBackground(new java.awt.Color(255, 0, 0));
         jtbGuardarDatosDestinatario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jtbGuardarDatosDestinatario.setForeground(new java.awt.Color(255, 255, 255));
-        jtbGuardarDatosDestinatario.setText("GUARDAR DATOS");
+        jtbGuardarDatosDestinatario.setText("GUARDAR DATOS DEL DESTINATARIO");
         jtbGuardarDatosDestinatario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtbGuardarDatosDestinatarioActionPerformed(evt);
@@ -354,7 +357,7 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        txtNombresDestinatario1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Apellidos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtApellidosDestinatario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Apellidos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -363,24 +366,25 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(txtDocDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(txtDocDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtNombresDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCorreoDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNombresDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                            .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jtbGuardarDatosDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                            .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtCorreoDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNombresDestinatario1, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                    .addComponent(txtTelefonoDestinatario))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtApellidosDestinatario, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                            .addComponent(txtTelefonoDestinatario)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(jtbGuardarDatosDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -392,16 +396,16 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDocDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombresDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombresDestinatario1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApellidosDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCorreoDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTelefonoDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtbGuardarDatosDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCargo, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jtbGuardarDatosDestinatario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(115, Short.MAX_VALUE))
         );
 
@@ -415,13 +419,13 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("GESTION DOCUMENTAL");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Volver");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+        jbVolver.setBackground(new java.awt.Color(255, 51, 51));
+        jbVolver.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jbVolver.setForeground(new java.awt.Color(255, 255, 255));
+        jbVolver.setText("VOLVER");
+        jbVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVolverActionPerformed(evt);
             }
         });
 
@@ -432,17 +436,17 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 393, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 373, Short.MAX_VALUE)
+                .addComponent(jbVolver)
+                .addGap(36, 36, 36))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbVolver)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13))
         );
 
@@ -484,22 +488,25 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
 
         String sql;
         String docDestinatario = txtDocDestinatario.getText();
-        String cargo = txtCargo.getText();
-        String correoDestinatario = txtCorreoDestinatario.getText();
-        String area = txtArea.getText();
         String nombresDestinatario = txtNombresDestinatario.getText();
-        String telefonoDestinatario = txtTelefonoDestinatario.getText();
+        String apellidosDestinatario = txtApellidosDestinatario.getText();
+        String correoDestinatario = txtCorreoDestinatario.getText();
+        String cargo = txtCargo.getText();
+        String area = txtArea.getText();
 
-        sql = "INSERT INTO `destinatario`(`idDestinatario`, `docDestinatario`, `cargo`, `nombreDestinatario`, `area`, `correoDestinatario`, `telefonoDestinatario`) VALUES(null,?,?,?,?,?,?)";
+//        String telefonoDestinatario = txtTelefonoDestinatario.getText();
+
+        sql = "INSERT INTO `destinatario`(`documento`, `nombres`, `apellidos`, `correo`, `cargo`, `area`) VALUES (?,?,?,?,?,?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, docDestinatario);
-            ps.setString(2, cargo);
-            ps.setString(3, nombresDestinatario);
-            ps.setString(4, area);
-            ps.setString(5, correoDestinatario);
-            ps.setString(6, telefonoDestinatario);
+            ps.setString(2, nombresDestinatario);
+            ps.setString(3, apellidosDestinatario);
+            ps.setString(4, correoDestinatario);
+            ps.setString(5, cargo);
+            ps.setString(6, area);
+//            ps.setString(6, telefonoDestinatario);
             int consulta3 = ps.executeUpdate();
 
             if(consulta3 > 0) {
@@ -524,22 +531,24 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
 
         String sql;
         String docEmpresaRemitente = txtDocEmpresa.getText();
+        String nombreEmpleadoRemitente = txtNombreEmpleadoEmpresa.getText();
+        String apellidoEmpleadoRemitente = txtApellidoEmpleadoEmpresa.getText();
+        String correoEmpresaRemitente = txtCorreoEmpresa.getText();
         String nombreEmpresaRemitente = txtNombreEmpresa.getText();
         String nit = txtNit.getText();
-        String nombreEmpleadoRemitente = txtNombreEmpleadoEmpresa.getText();
-        String correoEmpresaRemitente = txtCorreoEmpresa.getText();
-        String telefonoEmpresaRemitente = txtTelefonoEmpresa.getText();
+//        String telefonoEmpresaRemitente = txtTelefonoEmpresa.getText();
 
-        sql = "INSERT INTO `empresa`(`idEmpresa`, `docEmpresa`, `nombreEmpresa`, `nit`, `nombreEmpleado`, `correoEmpresa`, `telefonoEmpresa`) VALUES(null,?,?,?,?,?,?)";
+        sql = "INSERT INTO `empresa`(`documento`, `nombres`, `apellidos`, `correo`, `nombre_empresa`, `nit`) VALUES (?,?,?,?,?,?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, docEmpresaRemitente);
-            ps.setString(2, nombreEmpresaRemitente);
-            ps.setString(3, nit);
-            ps.setString(4, nombreEmpleadoRemitente);
-            ps.setString(5, correoEmpresaRemitente);
-            ps.setString(6, telefonoEmpresaRemitente);
+            ps.setString(2, nombreEmpleadoRemitente);
+            ps.setString(3, apellidoEmpleadoRemitente);
+            ps.setString(4, correoEmpresaRemitente);
+            ps.setString(5, nombreEmpresaRemitente);
+            ps.setString(6, nit);
+//            ps.setString(6, telefonoEmpresaRemitente);
             int consulta2 = ps.executeUpdate();
 
             if(consulta2 > 0) {
@@ -561,21 +570,23 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
         String sql;
         String docEstudianteRemitente = txtDocEstudiante.getText();
         String nombreEstudianteRemitente = txtNombreEstudiante.getText();
-        String carrera = jComboBoxCarrera.getSelectedItem().toString();
-        String semestre = txtSemestre.getText();
+        String apellidoEstudianteRemitente = txtApellidosEstudiante.getText();
         String correoEstudianteRemitente = txtCorreoEstudiante.getText();
-        String telefonoEstudianteRemitente = txtTelefonoEstudiante.getText();
+        String carrera = getCarrera();
+        String semestre = txtSemestre.getText();
+//        String telefonoEstudianteRemitente = txtTelefonoEstudiante.getText();
 
-        sql = "INSERT INTO `estudiante`(`idEstudiante`, `docEstudiante`, `nombresEstudiante`, `carrera`, `semestre`, `correoEstudiante`, `telefonoEstudiante`) VALUES(null,?,?,?,?,?,?)";
+        sql = "INSERT INTO `estudiante`(`documento`, `nombres`, `apellidos`, `correo`, `carrera`, `semestre`) VALUES (?,?,?,?,?,?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, docEstudianteRemitente);
             ps.setString(2, nombreEstudianteRemitente);
-            ps.setString(3, carrera);
-            ps.setString(4, semestre);
-            ps.setString(5, correoEstudianteRemitente);
-            ps.setString(6, telefonoEstudianteRemitente);
+            ps.setString(3, apellidoEstudianteRemitente);
+            ps.setString(4, correoEstudianteRemitente);
+            ps.setString(5, carrera);
+            ps.setString(6, semestre);
+//            ps.setString(6, telefonoEstudianteRemitente);
             int consulta1 = ps.executeUpdate();
 
             if(consulta1 > 0) {
@@ -588,15 +599,7 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jtbGuardarDatosEstudianteActionPerformed
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        JFrameRegistrarDocumento jfrd = new JFrameRegistrarDocumento();
-        jfrd.setVisible(true);
-        jfrd.pack();
-        jfrd.setLocationRelativeTo(null);
-        jfrd.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_jLabel3MouseClicked
-
+        
     private void txtDocEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocEstudianteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDocEstudianteActionPerformed
@@ -604,6 +607,15 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
     private void txtApellidosEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosEstudianteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidosEstudianteActionPerformed
+
+    private void jbVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolverActionPerformed
+        JFrameRegistrarDocumento jrDocumento = new JFrameRegistrarDocumento();
+        jrDocumento.setVisible(true);
+        jrDocumento.pack();
+        jrDocumento.setLocationRelativeTo(null);
+        jrDocumento.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jbVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -651,7 +663,6 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jComboBoxCarrera;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
-    public javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel6;
     public javax.swing.JLabel jLabel7;
     public javax.swing.JLabel jLabel8;
@@ -664,10 +675,13 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
     public javax.swing.JPanel jPanel7;
     public javax.swing.JSeparator jSeparator1;
     public javax.swing.JTabbedPane jTabbedPane1;
+    public javax.swing.JButton jbVolver;
     public javax.swing.JToggleButton jtbGuardarDatosDestinatario;
     public javax.swing.JToggleButton jtbGuardarDatosEmpresa;
     public javax.swing.JToggleButton jtbGuardarDatosEstudiante;
     public java.awt.Panel panel1;
+    public javax.swing.JTextField txtApellidoEmpleadoEmpresa;
+    public javax.swing.JTextField txtApellidosDestinatario;
     public javax.swing.JTextField txtApellidosEstudiante;
     public javax.swing.JTextField txtArea;
     public javax.swing.JTextField txtCargo;
@@ -679,11 +693,9 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
     public javax.swing.JTextField txtDocEstudiante;
     public javax.swing.JTextField txtNit;
     public javax.swing.JTextField txtNombreEmpleadoEmpresa;
-    public javax.swing.JTextField txtNombreEmpleadoEmpresa1;
     public javax.swing.JTextField txtNombreEmpresa;
     public javax.swing.JTextField txtNombreEstudiante;
     public javax.swing.JTextField txtNombresDestinatario;
-    public javax.swing.JTextField txtNombresDestinatario1;
     public javax.swing.JTextField txtSemestre;
     public javax.swing.JTextField txtTelefonoDestinatario;
     public javax.swing.JTextField txtTelefonoEmpresa;
@@ -695,6 +707,34 @@ public class JFrameRegistrarEntidades extends javax.swing.JFrame {
         JFrameRegistrarEntidades main = new JFrameRegistrarEntidades();
         main.setVisible(true);
         this.dispose(); 
+    }
+
+    private String getCarrera() {
+        if(jComboBoxCarrera.getSelectedItem().equals("Diseño grafico")) {
+            return "1";
+        }
+        else if (jComboBoxCarrera.getSelectedItem().equals("Diseño de modas")){
+            return "2";
+        }
+        else if (jComboBoxCarrera.getSelectedItem().equals("Hoteleria y turismo")) {
+            return "3";
+        }
+        else if (jComboBoxCarrera.getSelectedItem().equals("Ingenieria de software")) {
+            return "4";
+        }
+        else if (jComboBoxCarrera.getSelectedItem().equals("Negocios internacionales")) {
+            return "5";
+        }
+        else if (jComboBoxCarrera.getSelectedItem().equals("Administracion financiera")) {
+            return "6";
+        }
+        else if (jComboBoxCarrera.getSelectedItem().equals("Logistica empresarial")) {
+            return "7";
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "No se selecciono una carrera");
+        }
+        return null;
     }
    
 }
