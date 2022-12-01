@@ -5,7 +5,6 @@
 package com.mycompany.gestiondocumentalfesc.conexion;
 
 import com.mycompany.gestiondocumentalfesc.modelos.Documento;
-import java.sql.Timestamp;
 
 /**
  *
@@ -14,10 +13,6 @@ import java.sql.Timestamp;
 public interface IDaoDocumento {
     
     public boolean registrarDocumento(Documento documento);
-    public int getIdDocumento(Timestamp fecha);
-    public boolean asignarDocumentoEntrega(int entregaId, int respuestaId);
-    
-    public boolean asignarDocumentoEstudianteRemitente(int estudianteId, int documentoId);
-    public boolean asignarDocumentoEmpresaRemitente(int empresaId, int documentoId);
-    public boolean asignarDocumentoDestinatario(int destinatarioId, int documentoId);
+    public int getIdDocumento(String nombreArchivo);
+    public boolean asignarDocumento(int propietarioId, int documentoId, String nombreTabla);
 }

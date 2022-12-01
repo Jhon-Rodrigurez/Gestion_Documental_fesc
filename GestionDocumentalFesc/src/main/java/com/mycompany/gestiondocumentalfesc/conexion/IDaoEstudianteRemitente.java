@@ -15,6 +15,5 @@ public interface IDaoEstudianteRemitente {
     
     public boolean registrarEstudianteRemitente(EstudianteRemitente estudianteRemitente);
     public int getIdEstudianteRemitente(String documento);
-    public boolean asignarTelefonoEstudianteRemitente(int estudianteId, int telefonoId);
-    public Datos getDocumentoEmpresa(String nombreEmpresa);
+    public Datos getDocumentoEstudiante(String documentoEstudiante);
 }

@@ -7,6 +7,7 @@ package com.mycompany.gestiondocumentalfesc.conexion;
 import com.mycompany.gestiondocumentalfesc.modelos.Destinatario;
 import com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrarEntidades;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -53,12 +54,31 @@ public class DaoDestinatario extends Conexion implements IDaoDestinatario {
 
     @Override
     public int getIdDestinatario(String documento) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean asignarTelefonoDestinatario(int destinatarioId, int telefonoId) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int id = 0;
+        
+        String sql = "SELECT destinatario.id FROM `destinatario` WHERE destinatario.documento = '"+documento+"'";
+        
+        try {
+            PreparedStatement ps= conectar().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {                
+                
+                id = rs.getInt("id");
+                
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Error al leer los datos "+e.getMessage());
+        }finally{
+            try {
+                conectar().close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexion "+e);
+            }
+        }
+        
+        return id;
     }
 
 }

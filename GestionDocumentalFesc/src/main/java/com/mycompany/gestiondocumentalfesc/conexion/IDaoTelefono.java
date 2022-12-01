@@ -4,14 +4,12 @@
  */
 package com.mycompany.gestiondocumentalfesc.conexion;
 
-import com.mycompany.gestiondocumentalfesc.modelos.Destinatario;
-
 /**
  *
- * @author Aula 104
+ * @author bibliofesc
  */
-public interface IDaoDestinatario {
+public interface IDaoTelefono {
     
-    public boolean registrarDestinatario(Destinatario destinatario);
-    public int getIdDestinatario(String documento);
+    public boolean registrarTelefono(String numTelefono);
+    public int getIdTelefono(String numTelefono);
 }

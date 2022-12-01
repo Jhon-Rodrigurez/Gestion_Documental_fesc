@@ -8,6 +8,7 @@ import com.mycompany.gestiondocumentalfesc.modelos.Documento;
 import com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrarDocumento;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import javax.swing.JTextField;
@@ -59,28 +60,65 @@ public class DaoDocumento extends Conexion implements IDaoDocumento {
     }
 
     @Override
-    public int getIdDocumento(Timestamp fecha) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int getIdDocumento(String nombreArchivo) {
+        int id = 0;
+        
+        String sql = "SELECT documento.id FROM `documento` WHERE documento.nombre_archivo = '"+nombreArchivo+"'";
+        
+        try {
+            PreparedStatement ps= conectar().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {                
+                
+                id = rs.getInt("id");
+                
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Error al leer los datos "+e.getMessage());
+        }finally{
+            try {
+                conectar().close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexion "+e);
+            }
+        }
+        
+        return id;
     }
 
     @Override
-    public boolean asignarDocumentoEntrega(int entregaId, int respuestaId) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean asignarDocumentoEstudianteRemitente(int estudianteId, int documentoId) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean asignarDocumentoEmpresaRemitente(int empresaId, int documentoId) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean asignarDocumentoDestinatario(int destinatarioId, int documentoId) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean asignarDocumento(int propietarioId, int destinoId, String nombreTabla) {
+        
+        boolean res = false;
+        String sql = "INSERT INTO `?`(`id_telefono`, `id_?`) VALUES (?,?)";
+        
+        try {
+            PreparedStatement ps= conectar().prepareStatement(sql);
+            
+            ps.setString(1, nombreTabla);
+            ps.setString(2, nombreTabla);
+            ps.setString(3, ""+propietarioId);
+            ps.setString(4, ""+destinoId);
+            
+            int insertados = ps.executeUpdate();
+            
+            if (insertados > 0) {
+                res = true;
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Error al leer los datos "+e.getMessage());
+            res = false;
+        }finally{
+            try {
+                conectar().close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexion "+e.getMessage());
+            }
+        }
+        return res;
     }
 
 }
