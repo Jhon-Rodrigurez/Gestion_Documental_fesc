@@ -1,83 +1,61 @@
--- MariaDB dump 10.19  Distrib 10.4.24-MariaDB, for Win64 (AMD64)
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: gestiondocumentaldb
--- ------------------------------------------------------
--- Server version	10.4.24-MariaDB
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 01-12-2022 a las 13:05:59
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `destinatario`
+-- Base de datos: `gestiondocumentaldb`
 --
 
-DROP TABLE IF EXISTS `destinatario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `destinatario`
+--
+
 CREATE TABLE `destinatario` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `documento` varchar(20) NOT NULL,
   `nombres` varchar(40) NOT NULL,
   `apellidos` varchar(40) NOT NULL,
   `correo` varchar(30) NOT NULL,
   `cargo` varchar(20) NOT NULL,
-  `area` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
+  `area` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `destinatario`
+-- Estructura de tabla para la tabla `destinatario_doc`
 --
 
-LOCK TABLES `destinatario` WRITE;
-/*!40000 ALTER TABLE `destinatario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `destinatario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `destinatario_doc`
---
-
-DROP TABLE IF EXISTS `destinatario_doc`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `destinatario_doc` (
   `id_destinatario` int(11) NOT NULL,
-  `id_documento` int(11) NOT NULL,
-  KEY `id_destinatario` (`id_destinatario`),
-  KEY `id_documento` (`id_documento`),
-  CONSTRAINT `destinatario_doc_ibfk_1` FOREIGN KEY (`id_destinatario`) REFERENCES `destinatario` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `destinatario_doc_ibfk_2` FOREIGN KEY (`id_documento`) REFERENCES `documento` (`id`) ON DELETE CASCADE
+  `id_documento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `destinatario_doc`
+-- Estructura de tabla para la tabla `documento`
 --
 
-LOCK TABLES `destinatario_doc` WRITE;
-/*!40000 ALTER TABLE `destinatario_doc` DISABLE KEYS */;
-/*!40000 ALTER TABLE `destinatario_doc` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `documento`
---
-
-DROP TABLE IF EXISTS `documento`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `documento` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nombre_archivo` varchar(30) NOT NULL,
   `ruta_archivo` varchar(50) NOT NULL,
   `fecha` date NOT NULL,
@@ -86,338 +64,364 @@ CREATE TABLE `documento` (
   `tipo_documento` int(11) NOT NULL,
   `asunto` varchar(50) NOT NULL,
   `anexos` varchar(50) NOT NULL,
-  `req_respuesta` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
+  `req_respuesta` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `documento`
+-- Estructura de tabla para la tabla `empresa`
 --
 
-LOCK TABLES `documento` WRITE;
-/*!40000 ALTER TABLE `documento` DISABLE KEYS */;
-/*!40000 ALTER TABLE `documento` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `empresa`
---
-
-DROP TABLE IF EXISTS `empresa`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `empresa` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `documento` varchar(20) DEFAULT NULL,
   `nombres` varchar(40) NOT NULL,
   `apellidos` varchar(40) DEFAULT NULL,
   `correo` varchar(30) NOT NULL,
   `nombre_empresa` varchar(20) NOT NULL,
-  `nit` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `nit` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `empresa`
+-- Estructura de tabla para la tabla `empresa_doc`
 --
 
-LOCK TABLES `empresa` WRITE;
-/*!40000 ALTER TABLE `empresa` DISABLE KEYS */;
-/*!40000 ALTER TABLE `empresa` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `empresa_doc`
---
-
-DROP TABLE IF EXISTS `empresa_doc`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `empresa_doc` (
   `id_empresa` int(11) NOT NULL,
-  `id_documento` int(11) NOT NULL,
-  KEY `id_empresa` (`id_empresa`),
-  KEY `id_documento` (`id_documento`),
-  CONSTRAINT `empresa_doc_ibfk_1` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `empresa_doc_ibfk_2` FOREIGN KEY (`id_documento`) REFERENCES `documento` (`id`) ON DELETE CASCADE
+  `id_documento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `empresa_doc`
+-- Estructura de tabla para la tabla `estudiante`
 --
 
-LOCK TABLES `empresa_doc` WRITE;
-/*!40000 ALTER TABLE `empresa_doc` DISABLE KEYS */;
-/*!40000 ALTER TABLE `empresa_doc` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `estudiante`
---
-
-DROP TABLE IF EXISTS `estudiante`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estudiante` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `documento` varchar(20) NOT NULL,
   `nombres` varchar(40) NOT NULL,
   `apellidos` varchar(40) NOT NULL,
   `correo` varchar(30) NOT NULL,
   `carrera` int(11) NOT NULL,
-  `semestre` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `semestre` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `estudiante`
+-- Estructura de tabla para la tabla `estudiante_doc`
 --
 
-LOCK TABLES `estudiante` WRITE;
-/*!40000 ALTER TABLE `estudiante` DISABLE KEYS */;
-/*!40000 ALTER TABLE `estudiante` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `estudiante_doc`
---
-
-DROP TABLE IF EXISTS `estudiante_doc`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estudiante_doc` (
   `id_estudiante` int(11) NOT NULL,
-  `id_documento` int(11) NOT NULL,
-  KEY `id_estudiante` (`id_estudiante`),
-  KEY `id_documento` (`id_documento`),
-  CONSTRAINT `estudiante_doc_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `estudiante_doc_ibfk_2` FOREIGN KEY (`id_documento`) REFERENCES `documento` (`id`) ON DELETE CASCADE
+  `id_documento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `estudiante_doc`
+-- Estructura de tabla para la tabla `login`
 --
 
-LOCK TABLES `estudiante_doc` WRITE;
-/*!40000 ALTER TABLE `estudiante_doc` DISABLE KEYS */;
-/*!40000 ALTER TABLE `estudiante_doc` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `login`
---
-
-DROP TABLE IF EXISTS `login`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `login` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `clave` varchar(40) NOT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL,
+  `clave` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `login`
+-- Estructura de tabla para la tabla `respuesta_entrega`
 --
 
-LOCK TABLES `login` WRITE;
-/*!40000 ALTER TABLE `login` DISABLE KEYS */;
-/*!40000 ALTER TABLE `login` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `respuesta_entrega`
---
-
-DROP TABLE IF EXISTS `respuesta_entrega`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `respuesta_entrega` (
   `id_respuesta` int(11) NOT NULL,
-  `id_entrega` int(11) NOT NULL,
-  KEY `id_respuesta` (`id_respuesta`),
-  KEY `id_entrega` (`id_entrega`),
-  CONSTRAINT `respuesta_entrega_ibfk_1` FOREIGN KEY (`id_respuesta`) REFERENCES `documento` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `respuesta_entrega_ibfk_2` FOREIGN KEY (`id_entrega`) REFERENCES `documento` (`id`) ON DELETE CASCADE
+  `id_entrega` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `respuesta_entrega`
+-- Estructura de tabla para la tabla `telefono`
 --
 
-LOCK TABLES `respuesta_entrega` WRITE;
-/*!40000 ALTER TABLE `respuesta_entrega` DISABLE KEYS */;
-/*!40000 ALTER TABLE `respuesta_entrega` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `telefono`
---
-
-DROP TABLE IF EXISTS `telefono`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `telefono` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `num_telefono` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL,
+  `num_telefono` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `telefono`
+-- Estructura de tabla para la tabla `telefono_destinatario`
 --
 
-LOCK TABLES `telefono` WRITE;
-/*!40000 ALTER TABLE `telefono` DISABLE KEYS */;
-/*!40000 ALTER TABLE `telefono` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `telefono_destinatario`
---
-
-DROP TABLE IF EXISTS `telefono_destinatario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `telefono_destinatario` (
   `id_telefono` int(11) NOT NULL,
-  `id_destinatario` int(11) NOT NULL,
-  KEY `id_telefono` (`id_telefono`),
-  KEY `id_destinatario` (`id_destinatario`),
-  CONSTRAINT `telefono_destinatario_ibfk_1` FOREIGN KEY (`id_telefono`) REFERENCES `telefono` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `telefono_destinatario_ibfk_2` FOREIGN KEY (`id_destinatario`) REFERENCES `destinatario` (`id`) ON DELETE CASCADE
+  `id_destinatario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `telefono_destinatario`
+-- Estructura de tabla para la tabla `telefono_empresa`
 --
 
-LOCK TABLES `telefono_destinatario` WRITE;
-/*!40000 ALTER TABLE `telefono_destinatario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `telefono_destinatario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `telefono_empresa`
---
-
-DROP TABLE IF EXISTS `telefono_empresa`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `telefono_empresa` (
   `id_telefono` int(11) NOT NULL,
-  `id_empresa` int(11) NOT NULL,
-  KEY `id_telefono` (`id_telefono`),
-  KEY `id_empresa` (`id_empresa`),
-  CONSTRAINT `telefono_empresa_ibfk_1` FOREIGN KEY (`id_telefono`) REFERENCES `telefono` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `telefono_empresa_ibfk_2` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id`) ON DELETE CASCADE
+  `id_empresa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `telefono_empresa`
+-- Estructura de tabla para la tabla `telefono_estudiante`
 --
 
-LOCK TABLES `telefono_empresa` WRITE;
-/*!40000 ALTER TABLE `telefono_empresa` DISABLE KEYS */;
-/*!40000 ALTER TABLE `telefono_empresa` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `telefono_estudiante`
---
-
-DROP TABLE IF EXISTS `telefono_estudiante`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `telefono_estudiante` (
   `id_telefono` int(11) NOT NULL,
-  `id_estudiante` int(11) NOT NULL,
-  KEY `id_telefono` (`id_telefono`),
-  KEY `id_estudiante` (`id_estudiante`),
-  CONSTRAINT `telefono_estudiante_ibfk_1` FOREIGN KEY (`id_telefono`) REFERENCES `telefono` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `telefono_estudiante_ibfk_2` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante` (`id`) ON DELETE CASCADE
+  `id_estudiante` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `telefono_estudiante`
+-- Estructura de tabla para la tabla `usuario`
 --
 
-LOCK TABLES `telefono_estudiante` WRITE;
-/*!40000 ALTER TABLE `telefono_estudiante` DISABLE KEYS */;
-/*!40000 ALTER TABLE `telefono_estudiante` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `usuario`
---
-
-DROP TABLE IF EXISTS `usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `documento` varchar(20) NOT NULL,
   `nombres` varchar(40) NOT NULL,
   `apellidos` varchar(40) NOT NULL,
   `correo` varchar(30) NOT NULL,
-  `cargo` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `cargo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `usuario`
+-- Estructura de tabla para la tabla `usuario_login`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `usuario_login`
---
-
-DROP TABLE IF EXISTS `usuario_login`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario_login` (
   `id_usuario` int(11) NOT NULL,
-  `id_login` int(11) NOT NULL,
-  KEY `id_usuario` (`id_usuario`),
-  KEY `id_login` (`id_login`),
-  CONSTRAINT `usuario_login_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `usuario_login_ibfk_2` FOREIGN KEY (`id_login`) REFERENCES `login` (`id`) ON DELETE CASCADE
+  `id_login` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario_login`
+-- Índices para tablas volcadas
 --
 
-LOCK TABLES `usuario_login` WRITE;
-/*!40000 ALTER TABLE `usuario_login` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuario_login` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+--
+-- Indices de la tabla `destinatario`
+--
+ALTER TABLE `destinatario`
+  ADD PRIMARY KEY (`id`);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indices de la tabla `destinatario_doc`
+--
+ALTER TABLE `destinatario_doc`
+  ADD KEY `id_destinatario` (`id_destinatario`),
+  ADD KEY `id_documento` (`id_documento`);
+
+--
+-- Indices de la tabla `documento`
+--
+ALTER TABLE `documento`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `empresa`
+--
+ALTER TABLE `empresa`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `empresa_doc`
+--
+ALTER TABLE `empresa_doc`
+  ADD KEY `id_empresa` (`id_empresa`),
+  ADD KEY `id_documento` (`id_documento`);
+
+--
+-- Indices de la tabla `estudiante`
+--
+ALTER TABLE `estudiante`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `estudiante_doc`
+--
+ALTER TABLE `estudiante_doc`
+  ADD KEY `id_estudiante` (`id_estudiante`),
+  ADD KEY `id_documento` (`id_documento`);
+
+--
+-- Indices de la tabla `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `respuesta_entrega`
+--
+ALTER TABLE `respuesta_entrega`
+  ADD KEY `id_respuesta` (`id_respuesta`),
+  ADD KEY `id_entrega` (`id_entrega`);
+
+--
+-- Indices de la tabla `telefono`
+--
+ALTER TABLE `telefono`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `telefono_destinatario`
+--
+ALTER TABLE `telefono_destinatario`
+  ADD KEY `id_telefono` (`id_telefono`),
+  ADD KEY `id_destinatario` (`id_destinatario`);
+
+--
+-- Indices de la tabla `telefono_empresa`
+--
+ALTER TABLE `telefono_empresa`
+  ADD KEY `id_telefono` (`id_telefono`),
+  ADD KEY `id_empresa` (`id_empresa`);
+
+--
+-- Indices de la tabla `telefono_estudiante`
+--
+ALTER TABLE `telefono_estudiante`
+  ADD KEY `id_telefono` (`id_telefono`),
+  ADD KEY `id_estudiante` (`id_estudiante`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuario_login`
+--
+ALTER TABLE `usuario_login`
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_login` (`id_login`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `destinatario`
+--
+ALTER TABLE `destinatario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `documento`
+--
+ALTER TABLE `documento`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `empresa`
+--
+ALTER TABLE `empresa`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `estudiante`
+--
+ALTER TABLE `estudiante`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `login`
+--
+ALTER TABLE `login`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `telefono`
+--
+ALTER TABLE `telefono`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `destinatario_doc`
+--
+ALTER TABLE `destinatario_doc`
+  ADD CONSTRAINT `destinatario_doc_ibfk_1` FOREIGN KEY (`id_destinatario`) REFERENCES `destinatario` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `destinatario_doc_ibfk_2` FOREIGN KEY (`id_documento`) REFERENCES `documento` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `empresa_doc`
+--
+ALTER TABLE `empresa_doc`
+  ADD CONSTRAINT `empresa_doc_ibfk_1` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `empresa_doc_ibfk_2` FOREIGN KEY (`id_documento`) REFERENCES `documento` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `estudiante_doc`
+--
+ALTER TABLE `estudiante_doc`
+  ADD CONSTRAINT `estudiante_doc_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `estudiante_doc_ibfk_2` FOREIGN KEY (`id_documento`) REFERENCES `documento` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `respuesta_entrega`
+--
+ALTER TABLE `respuesta_entrega`
+  ADD CONSTRAINT `respuesta_entrega_ibfk_1` FOREIGN KEY (`id_respuesta`) REFERENCES `documento` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `respuesta_entrega_ibfk_2` FOREIGN KEY (`id_entrega`) REFERENCES `documento` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `telefono_destinatario`
+--
+ALTER TABLE `telefono_destinatario`
+  ADD CONSTRAINT `telefono_destinatario_ibfk_1` FOREIGN KEY (`id_telefono`) REFERENCES `telefono` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `telefono_destinatario_ibfk_2` FOREIGN KEY (`id_destinatario`) REFERENCES `destinatario` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `telefono_empresa`
+--
+ALTER TABLE `telefono_empresa`
+  ADD CONSTRAINT `telefono_empresa_ibfk_1` FOREIGN KEY (`id_telefono`) REFERENCES `telefono` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `telefono_empresa_ibfk_2` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `telefono_estudiante`
+--
+ALTER TABLE `telefono_estudiante`
+  ADD CONSTRAINT `telefono_estudiante_ibfk_1` FOREIGN KEY (`id_telefono`) REFERENCES `telefono` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `telefono_estudiante_ibfk_2` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `usuario_login`
+--
+ALTER TABLE `usuario_login`
+  ADD CONSTRAINT `usuario_login_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `usuario_login_ibfk_2` FOREIGN KEY (`id_login`) REFERENCES `login` (`id`) ON UPDATE CASCADE;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2022-11-29 17:00:53
