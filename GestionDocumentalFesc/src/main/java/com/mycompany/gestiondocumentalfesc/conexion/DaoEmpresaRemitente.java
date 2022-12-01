@@ -4,6 +4,7 @@
  */
 package com.mycompany.gestiondocumentalfesc.conexion;
 
+import com.mycompany.gestiondocumentalfesc.modelos.Datos;
 import com.mycompany.gestiondocumentalfesc.modelos.EmpresaRemitente;
 import com.mycompany.gestiondocumentalfesc.vistas.JFrameRegistrarEntidades;
 import java.sql.PreparedStatement;
@@ -61,6 +62,15 @@ public class DaoEmpresaRemitente extends Conexion implements IDaoEmpresaRemitent
     @Override
     public boolean asignarTelefonoEmpresaRemitente(int empresaId, int telefonoId) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Datos getDocumentoEstudiante(String documentoEstudiante) {
+        Datos d = new Datos();
+        
+        String sql = "";
+        
+        return d;
     }
 
 }
