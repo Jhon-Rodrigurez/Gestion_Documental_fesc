@@ -89,7 +89,7 @@ public class DaoDocumento extends Conexion implements IDaoDocumento {
     }
 
     @Override
-    public boolean asignarDocumento(int propietarioId, int destinoId, String nombreTabla) {
+    public boolean relacionar(int propietarioId, int destinoId, String nombreTabla) {
         
         boolean res = false;
         String sql = "INSERT INTO `?`(`id_telefono`, `id_?`) VALUES (?,?)";

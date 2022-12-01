@@ -14,5 +14,5 @@ public interface IDaoDocumento {
     
     public boolean registrarDocumento(Documento documento);
     public int getIdDocumento(String nombreArchivo);
-    public boolean asignarDocumento(int propietarioId, int documentoId, String nombreTabla);
+    public boolean relacionar(int propietarioId, int documentoId, String nombreTabla);
 }

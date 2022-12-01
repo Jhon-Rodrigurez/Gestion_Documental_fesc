@@ -4,6 +4,7 @@
  */
 package com.mycompany.gestiondocumentalfesc.controladores;
 
+import com.mycompany.gestiondocumentalfesc.conexion.*;
 import com.mycompany.gestiondocumentalfesc.modelos.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -15,17 +16,17 @@ import javax.swing.JOptionPane;
  */
 public class ControladorEmpresaRemitente {
     
+    IDaoEmpresaRemitente daoEmp;
 
     public ControladorEmpresaRemitente() {
-        
+        this.daoEmp = new DaoEmpresaRemitente();
     }
 
-    public Datos getInfoDocumentos(String identificacion, String filtro, String filtroFecha) {
+    public Datos getInfoDocumentos(String nombreEmpresa, String filtro, String filtroFecha) {
         Datos d = null;
         
-        if (!identificacion.equals("")) {
-            d = new Datos();
-            d = getInfoEmpresa(identificacion, d);
+        if (!nombreEmpresa.equals("")) {
+            d = daoEmp.getDocumentoEmpresa(nombreEmpresa);
             
             if (!filtro.equals("Selecionar")) {
                 d = filtro(filtro, d);
@@ -38,37 +39,6 @@ public class ControladorEmpresaRemitente {
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, diligencie el remitente");
         }
-        
-        return d;
-    }
-    
-    private Datos getInfoEmpresa(String identificacion, Datos d) {
-        
-        ArrayList<EmpresaRemitente> arrEmp = EmpresaRemitente.getEmpresasRemitentes();
-        ArrayList<Documento> arrDoc = Documento.getDocumentos();
-        ArrayList<Destinatario> arrDes = Destinatario.getDestinatarios();
-        
-        ArrayList<EmpresaRemitente> arrEmpR = new ArrayList<>();
-        ArrayList<Documento> arrDocR = new ArrayList<>();
-        ArrayList<Destinatario> arrDesR = new ArrayList<>();
-        
-        if (identificacion.equals("exito")) {
-            
-            arrEmpR.add(arrEmp.get(0));
-            arrDocR.add(arrDoc.get(3));
-            arrDesR.add(arrDes.get(2));
-            
-        } else if (identificacion.equals("caracol")) {
-            
-            arrEmpR.add(arrEmp.get(1));
-            arrDocR.add(arrDoc.get(4));
-            arrDesR.add(arrDes.get(2));
-            
-        }
-        
-        d.setArrayListEmpresaRemitentes(arrEmpR);
-        d.setArrayListDocumentos(arrDocR);
-        d.setArrayListDestinatarios(arrDesR);
         
         return d;
     }

@@ -4,6 +4,7 @@
  */
 package com.mycompany.gestiondocumentalfesc.controladores;
 
+import com.mycompany.gestiondocumentalfesc.conexion.*;
 import com.mycompany.gestiondocumentalfesc.modelos.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -15,8 +16,10 @@ import javax.swing.JOptionPane;
  */
 public class ControladorEstudianteRemitente {
     
+    IDaoEstudianteRemitente daoEst;
+    
     public ControladorEstudianteRemitente() {
-        
+        this.daoEst = new DaoEstudianteRemitente();
     }
     
     public Datos getInfoDocumentos(String identificacion, String filtro, String filtroFecha) {
@@ -24,8 +27,7 @@ public class ControladorEstudianteRemitente {
         Datos d = null;
         
         if (!identificacion.equals("")) {
-            d = new Datos();
-            d = getInfoEstudiantes(identificacion, d);
+            d = daoEst.getDocumentoEstudiante(identificacion);
             
             if (!filtro.equals("Selecionar")) {
                 d = filtro(filtro, d);
@@ -38,41 +40,6 @@ public class ControladorEstudianteRemitente {
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, diligencie el remitente");
         }
-        
-        return d;
-    }
-
-    private Datos getInfoEstudiantes(String identificacion, Datos d) {
-        
-        ArrayList<EstudianteRemitente> arrEst = EstudianteRemitente.getEstudianteRemitentes();
-        ArrayList<Documento> arrDoc = Documento.getDocumentos();
-        ArrayList<Destinatario> arrDes = Destinatario.getDestinatarios();
-        
-        ArrayList<EstudianteRemitente> arrEstR = new ArrayList<>();
-        ArrayList<Documento> arrDocR = new ArrayList<>();
-        ArrayList<Destinatario> arrDesR = new ArrayList<>();
-        
-        if (identificacion.equals("234234234")) {
-            
-            arrEstR.add(arrEst.get(0));
-            arrDocR.add(arrDoc.get(0));
-            arrDesR.add(arrDes.get(0));
-            
-            arrEstR.add(arrEst.get(0));
-            arrDocR.add(arrDoc.get(1));
-            arrDesR.add(arrDes.get(0));
-            
-        } else if (identificacion.equals("49823423")) {
-            
-            arrEstR.add(arrEst.get(1));
-            arrDocR.add(arrDoc.get(2));
-            arrDesR.add(arrDes.get(1));
-            
-        }
-        
-        d.setArrayListEstudianteRemitentes(arrEstR);
-        d.setArrayListDocumentos(arrDocR);
-        d.setArrayListDestinatarios(arrDesR);
         
         return d;
     }

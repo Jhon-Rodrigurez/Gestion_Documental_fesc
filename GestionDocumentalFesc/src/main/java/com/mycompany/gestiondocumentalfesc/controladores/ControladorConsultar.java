@@ -61,17 +61,7 @@ public class ControladorConsultar implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Por favor, seleccione el tipo de remitente");
             }
             
-        } // else if (e.getSource() == jFrameConsultar.jTbRegistrarC) {
-//            
-//            JFrameRegistrar jFReg = new JFrameRegistrar();
-//            ControladorRegistrar ctReg = new ControladorRegistrar(jFReg);
-//            jFReg.setVisible(true);
-//            jFrameConsultar.setVisible(false);
-//            jFReg.setLocationRelativeTo(null);
-//            jFReg.pack();
-//            jFReg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            jFReg.dispose();
-//        }
+        }
     }
     
     public void setCbFiltro() {

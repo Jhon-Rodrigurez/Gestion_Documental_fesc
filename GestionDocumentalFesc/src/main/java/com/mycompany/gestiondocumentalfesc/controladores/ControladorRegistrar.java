@@ -1,8 +1,7 @@
 
 package com.mycompany.gestiondocumentalfesc.controladores;
 
-import com.mycompany.gestiondocumentalfesc.conexion.DaoRegistrarEntidades;
-import com.mycompany.gestiondocumentalfesc.conexion.IDaoRegistrarEntidades;
+import com.mycompany.gestiondocumentalfesc.conexion.*;
 import static com.mycompany.gestiondocumentalfesc.controladores.ControladorDetalles.copyFile;
 import com.mycompany.gestiondocumentalfesc.modelos.Destinatario;
 import com.mycompany.gestiondocumentalfesc.modelos.Documento;
@@ -26,11 +25,17 @@ public class ControladorRegistrar implements ActionListener {
     
     private JFrameRegistrarEntidades jFrameRegistrarEntidades;
     private JFrameRegistrarDocumento jFrameRegistrarDocumento;
-    private IDaoRegistrarEntidades iDaoRegistrarEntidades;
+    private IDaoDestinatario daoDes;
+    private IDaoDocumento daoDoc;
+    private IDaoEstudianteRemitente daoEst;
+    private IDaoEmpresaRemitente daoEmp;
+    private IDaoTelefono daoTelefono;
     private EstudianteRemitente estudianteRemitente;
     private EmpresaRemitente empresaRemitente;
     private Destinatario destinatario;
     private Documento documento;
+    private int propietarioId;
+    private int destinatarioId;
     
     public ControladorRegistrar(JFrameRegistrarEntidades jFrameRegistrarEntidades) {
         this.jFrameRegistrarEntidades = jFrameRegistrarEntidades;
@@ -39,7 +44,11 @@ public class ControladorRegistrar implements ActionListener {
         this.empresaRemitente = new EmpresaRemitente();
         this.destinatario = new Destinatario();
         this.documento = new Documento();
-        this.iDaoRegistrarEntidades = new DaoRegistrarEntidades();
+        this.daoDes = new DaoDestinatario();
+        this.daoDoc = new DaoDocumento();
+        this.daoEst = new DaoEstudianteRemitente();
+        this.daoEmp = new DaoEmpresaRemitente();
+        this.daoTelefono = new DaoTelefono();
         this.jFrameRegistrarEntidades.jtbGuardarDatosEstudiante.addActionListener(this);
         this.jFrameRegistrarEntidades.jtbGuardarDatosEmpresa.addActionListener(this);
         this.jFrameRegistrarEntidades.jtbGuardarDatosDestinatario.addActionListener(this);
@@ -73,13 +82,18 @@ public class ControladorRegistrar implements ActionListener {
             String correoEstudianteRemitente = jFrameRegistrarEntidades.txtCorreoEstudiante.getText();
             String carrera = getCarrera();
             String semestre = jFrameRegistrarEntidades.txtSemestre.getText();
+            String telefono = jFrameRegistrarEntidades.txtTelefonoEstudiante.getText();
             
             if(!docEstudianteRemitente.equals("") && !nombreEstudianteRemitente.equals("") && !apellidoEstudianteRemitente.equals("") && 
                !correoEstudianteRemitente.equals("") && !carrera.equals("") && !semestre.equals("")) {
                 
                 while(true) {
-                    if(iDaoRegistrarEntidades.registrarEstudianteRemitente(estudianteRemitente)) {
-                        JOptionPane.showMessageDialog(null, "Datos del estudiante subidos con exito");
+                    if(daoEst.registrarEstudianteRemitente(estudianteRemitente)) {
+                        propietarioId = daoEst.getIdEstudianteRemitente(estudianteRemitente.getDocumento());
+                        boolean res1 = daoTelefono.registrarTelefono(telefono);
+                        destinatarioId = daoTelefono.getIdTelefono(telefono);
+                        boolean res2 = daoDoc.relacionar(propietarioId, propietarioId, "telefono_estudiante");
+                        System.out.println("registrar tlf " + res1 + " asignar tlf " + res2);
                     }
                     else {
                         JOptionPane.showMessageDialog(null, "No se permiten campos vacios");
@@ -94,13 +108,18 @@ public class ControladorRegistrar implements ActionListener {
             String correoEmpresaRemitente = jFrameRegistrarEntidades.txtCorreoEmpresa.getText();
             String nombreEmpresaRemitente = jFrameRegistrarEntidades.txtNombreEmpresa.getText();
             String nit = jFrameRegistrarEntidades.txtNit.getText();
+            String telefono = jFrameRegistrarEntidades.txtTelefonoEmpresa.getText();
             
             if(!docEmpresaRemitente.equals("") && !nombreEmpleadoRemitente.equals("") && !apellidoEmpleadoRemitente.equals("") && 
                !correoEmpresaRemitente.equals("") && !nombreEmpresaRemitente.equals("") && !nit.equals("")) {
                 
                 while(true) {
-                    if(iDaoRegistrarEntidades.registrarEmpresaRemitente(empresaRemitente)) {
-                        JOptionPane.showMessageDialog(null, "Datos de la empresa subidos con exito");
+                    if(daoEmp.registrarEmpresaRemitente(empresaRemitente)) {
+                        propietarioId = daoEst.getIdEstudianteRemitente(estudianteRemitente.getDocumento());
+                        boolean res1 = daoTelefono.registrarTelefono(telefono);
+                        destinatarioId = daoTelefono.getIdTelefono(telefono);
+                        boolean res2 = daoDoc.relacionar(propietarioId, propietarioId, "telefono_empresa");
+                        System.out.println("registrar tlf " + res1 + " asignar tlf " + res2);
                     }
                     else {
                         JOptionPane.showMessageDialog(null, "No se permiten campos vacios");
@@ -115,13 +134,18 @@ public class ControladorRegistrar implements ActionListener {
             String correoDestinatario = jFrameRegistrarEntidades.txtCorreoDestinatario.getText();
             String cargo = jFrameRegistrarEntidades.txtCargo.getText();
             String area = jFrameRegistrarEntidades.txtArea.getText();
+            String telefono = jFrameRegistrarEntidades.txtTelefonoDestinatario.getText();
             
             if(!docDestinatario.equals("") && !nombresDestinatario.equals("") && !apellidosDestinatario.equals("") && 
                !correoDestinatario.equals("") && !cargo.equals("") && !area.equals("")) {
                 
                 while(true) {
-                    if(iDaoRegistrarEntidades.registrarDestinatario(destinatario)) {
-                        JOptionPane.showMessageDialog(null, "Datos del destinatario subidos con exito");
+                    if(daoDes.registrarDestinatario(destinatario)) {
+                        propietarioId = daoEst.getIdEstudianteRemitente(estudianteRemitente.getDocumento());
+                        boolean res1 = daoTelefono.registrarTelefono(telefono);
+                        destinatarioId = daoTelefono.getIdTelefono(telefono);
+                        boolean res2 = daoDoc.relacionar(propietarioId, propietarioId, "telefono_destinatario");
+                        System.out.println("registrar tlf " + res1 + " asignar tlf " + res2);
                     }
                     else {
                         JOptionPane.showMessageDialog(null, "No se permiten campos vacios");

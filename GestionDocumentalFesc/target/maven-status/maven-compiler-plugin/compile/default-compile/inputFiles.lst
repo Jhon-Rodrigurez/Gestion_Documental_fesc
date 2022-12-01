@@ -1,29 +1,37 @@
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\Documento.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\Conexion.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorDetalles.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorLogin.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\DaoLogin.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\IDaoRegistrarEntidades.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorEmpresaRemitente.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\Login.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\Usuario.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistroUsuario.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\vistas\JFrameLoginUsuario.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrarDocumento.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorRegistrar.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\RenderImgJTable\RenderImg.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\Persona.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorConsultar.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\EmpresaRemitente.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\vistas\JFrameDetalles.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorEstudianteRemitente.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\IDaoLogin.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\Datos.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrarEntidades.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\RenderImgJTable\ControladorTabla.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\DaoRegistrarEntidades.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\EstudianteRemitente.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\vistas\JFrameConsultar.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\GestionDocumentalFesc.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorUsuario.java
-C:\Users\Aula 104\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\Destinatario.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\IDaoDocumento.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorEstudianteRemitente.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorDetalles.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\DaoDocumento.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrarDocumento.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\Login.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\DaoTelefono.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\RenderImgJTable\RenderImg.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistrarEntidades.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\vistas\JFrameLoginUsuario.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\IDaoEstudianteRemitente.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorUsuario.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\Persona.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\DaoDestinatario.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\DaoEmpresaRemitente.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorEmpresaRemitente.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\Destinatario.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\Conexion.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorLogin.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\Usuario.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorConsultar.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\Datos.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\Documento.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\EmpresaRemitente.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\vistas\JFrameRegistroUsuario.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\IDaoDestinatario.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\modelos\EstudianteRemitente.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\IDaoLogin.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\GestionDocumentalFesc.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\vistas\JFrameDetalles.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\IDaoTelefono.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\controladores\ControladorRegistrar.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\RenderImgJTable\ControladorTabla.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\DaoEstudianteRemitente.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\DaoLogin.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\conexion\IDaoEmpresaRemitente.java
+C:\Users\bibliofesc\Documents\Gestion_Documental_fesc\GestionDocumentalFesc\src\main\java\com\mycompany\gestiondocumentalfesc\vistas\JFrameConsultar.java
